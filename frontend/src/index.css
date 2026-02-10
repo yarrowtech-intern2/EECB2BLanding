@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+
+:root {
+  --header-height: 0px;
+}
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  padding-top: var(--header-height);
+}
