@@ -10,7 +10,7 @@ const features = [
   {
     icon: FaChalkboardTeacher,
     title: "LMS (Learning Management System)",
-    desc: "Personalized study journeys for every class (1-12) with smart, adaptive content.",
+    desc: "Personalized study journeys for every class (3-10) with smart, adaptive content.",
   },
   {
     icon: FaBrain,
@@ -21,11 +21,6 @@ const features = [
     icon: FaSchool,
     title: "ERP System",
     desc: "End-to-end school operations from fees and HR to health records.",
-  },
-  {
-    icon: FaHeart,
-    title: "Well-being & Emotional Care",
-    desc: "With mood tracking, stress alerts, and well-being dashboards, ensure every child feels supported, balanced, and emotionally strong.",
   },
 ];
 
@@ -120,9 +115,7 @@ const WhyEEC = () => {
                         <h3 className="text-white font-extrabold text-base sm:text-lg leading-snug">
                           {item.title}
                         </h3>
-                        <p className="text-white/70 text-sm mt-1">
-                          Click to see details
-                        </p>
+
                       </div>
                     </div>
 

@@ -22,12 +22,6 @@ const features = [
       "Learning paths are tailored using AI, ensuring every child gets content, quizzes, and support that match their pace and strengths.",
   },
   {
-    icon: FaHeart,
-    title: "Emotional Well-being Integration",
-    desc:
-      "Built-in tools for mindfulness, stress tracking, and counseling support help nurture happier and more balanced students.",
-  },
-  {
     icon: FaChalkboardTeacher,
     title: "Adapts to Each Child's Learning Style",
     desc:

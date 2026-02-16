@@ -26,6 +26,7 @@ export default function Gallery() {
   const offsetRef = useRef(0);
   const lastRef = useRef(0);
 
+  // ✅ Smooth speed
   const SPEED = 55;
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function Gallery() {
 
   const loopImages = useMemo(() => [...images, ...images], [images]);
 
+  // ✅ Slider Animation
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -85,6 +87,7 @@ export default function Gallery() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [isPaused]);
 
+  // ✅ Reset on resize
   useEffect(() => {
     const handleResize = () => {
       offsetRef.current = 0;
@@ -100,7 +103,7 @@ export default function Gallery() {
       {/* ===================== */}
       {/* TOP IMAGE BANNER PART */}
       {/* ===================== */}
-      <div className="relative h-[420px] sm:h-[520px] lg:h-[640px] w-full overflow-hidden">
+      <div className="relative h-[260px] xs:h-[320px] sm:h-[420px] md:h-[520px] lg:h-[640px] w-full overflow-hidden">
         <img
           src={galleryBg}
           alt="Gallery Background"
@@ -108,13 +111,13 @@ export default function Gallery() {
           draggable="false"
         />
 
-        {/* dark overlay */}
-        <div className="absolute inset-0 bg-black/25" />
+        {/* overlay */}
+        <div className="absolute inset-0 bg-black/30" />
 
         {/* Right side text */}
-        <div className="absolute inset-0 flex items-center justify-end px-6 sm:px-10 lg:px-20">
+        <div className="absolute inset-0 flex items-center justify-end px-4 xs:px-6 sm:px-10 lg:px-20">
           <h2
-            className="text-white text-lg sm:text-2xl lg:text-3xl font-black drop-shadow-lg"
+            className="text-white text-base xs:text-lg sm:text-2xl lg:text-3xl font-black drop-shadow-lg"
             data-aos="fade-left"
           >
             Our Gallery
@@ -125,11 +128,11 @@ export default function Gallery() {
       {/* ===================== */}
       {/* WHITE GALLERY SECTION */}
       {/* ===================== */}
-      <div className="relative overflow-hidden py-24 bg-white">
-        <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative overflow-hidden py-14 xs:py-16 sm:py-20 md:py-24 bg-white">
+        <div className="relative max-w-7xl mx-auto px-3 xs:px-4 sm:px-6">
           {/* Heading */}
-          <div className="text-center mb-14" data-aos="fade-up">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight">
+          <div className="text-center mb-10 xs:mb-12 sm:mb-14" data-aos="fade-up">
+            <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black leading-tight">
               <span className="text-black">Our </span>
               <span className="text-yellow-400">Gallery</span>
             </h2>
@@ -138,15 +141,15 @@ export default function Gallery() {
           {/* Slider */}
           <div className="relative" data-aos="fade-up" data-aos-delay="150">
             {/* Fade edges */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent z-20" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white to-transparent z-20" />
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-10 xs:w-14 sm:w-16 bg-gradient-to-r from-white to-transparent z-20" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-10 xs:w-14 sm:w-16 bg-gradient-to-l from-white to-transparent z-20" />
 
             {/* Outer Box */}
-            <div className="overflow-hidden rounded-[2rem] border-2 border-yellow-400 bg-white shadow-[0_20px_60px_rgba(234,179,8,0.18)]">
+            <div className="overflow-hidden rounded-[1.5rem] xs:rounded-[2rem] border-2 border-yellow-400 bg-white shadow-[0_20px_60px_rgba(234,179,8,0.18)]">
               {/* Track */}
               <div
                 ref={trackRef}
-                className="flex gap-8 p-7 w-max will-change-transform"
+                className="flex gap-5 xs:gap-6 sm:gap-8 p-4 xs:p-5 sm:p-7 w-max will-change-transform"
               >
                 {loopImages.map((item, idx) => (
                   <div
@@ -158,9 +161,9 @@ export default function Gallery() {
                     onTouchCancel={() => setIsPaused(false)}
                     className="
                       relative
-                      w-[320px] sm:w-[420px] md:w-[520px]
-                      h-[220px] sm:h-[280px] md:h-[340px]
-                      rounded-3xl overflow-hidden
+                      w-[230px] xs:w-[260px] sm:w-[360px] md:w-[480px] lg:w-[520px]
+                      h-[160px] xs:h-[180px] sm:h-[240px] md:h-[300px] lg:h-[340px]
+                      rounded-2xl xs:rounded-3xl overflow-hidden
                       border-2 border-yellow-400 bg-white
                       shadow-xl flex-shrink-0
                       select-none touch-manipulation
@@ -184,6 +187,11 @@ export default function Gallery() {
                 ))}
               </div>
             </div>
+
+            {/* ✅ Small note for mobile */}
+            <p className="mt-4 text-center text-xs xs:text-sm text-slate-500 font-medium">
+              Tap & hold to pause the slider.
+            </p>
           </div>
         </div>
       </div>

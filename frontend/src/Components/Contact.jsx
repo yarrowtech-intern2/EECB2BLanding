@@ -1,8 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ContactForm = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    institutionName: "",
+    institutionAddress: "",
+  });
+
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -11,6 +21,31 @@ const ContactForm = () => {
       offset: 120,
     });
   }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // ✅ show success
+    setSubmitted(true);
+
+    // ✅ clear form
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      institutionName: "",
+      institutionAddress: "",
+    });
+
+    // optional: auto hide success
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+  };
 
   return (
     <section
@@ -49,7 +84,19 @@ const ContactForm = () => {
               <div className="absolute inset-0 bg-orange-100/40 rounded-br-3xl" />
             </div>
 
-            <form className="relative z-10 space-y-6">
+            {/* ✅ SUCCESS MESSAGE */}
+            {submitted && (
+              <div className="mb-6 rounded-2xl border border-yellow-300 bg-yellow-50 px-5 py-4 text-center">
+                <p className="font-extrabold text-slate-900 text-lg">
+                  Submitted Successfully ✅
+                </p>
+                <p className="text-sm text-slate-600 mt-1">
+                  We will contact you soon.
+                </p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
               {/* Name */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 mb-2">
@@ -57,6 +104,9 @@ const ContactForm = () => {
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 font-medium focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 transition-all duration-300"
                   placeholder="Enter your name"
@@ -70,6 +120,9 @@ const ContactForm = () => {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 font-medium focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 transition-all duration-300"
                   placeholder="Enter your phone number"
@@ -83,6 +136,9 @@ const ContactForm = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 font-medium focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 transition-all duration-300"
                   placeholder="Enter your email"
@@ -96,6 +152,9 @@ const ContactForm = () => {
                 </label>
                 <input
                   type="text"
+                  name="institutionName"
+                  value={formData.institutionName}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 font-medium focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 transition-all duration-300"
                   placeholder="Enter institution name"
@@ -108,6 +167,9 @@ const ContactForm = () => {
                   Institution Address *
                 </label>
                 <textarea
+                  name="institutionAddress"
+                  value={formData.institutionAddress}
+                  onChange={handleChange}
                   required
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 font-medium focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 transition-all duration-300 resize-none"
@@ -120,7 +182,7 @@ const ContactForm = () => {
                 type="submit"
                 className="w-full mt-6 rounded-xl bg-yellow-400 text-black font-extrabold text-lg py-4 hover:bg-yellow-300 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-md"
               >
-                Submit
+                {submitted ? "Submitted ✅" : "Submit"}
               </button>
             </form>
           </div>
