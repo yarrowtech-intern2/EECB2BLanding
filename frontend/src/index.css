@@ -24,3 +24,7 @@ html {
 body {
   padding-top: var(--header-height);
 }
+
+html, body {
+  overflow-x: hidden;
+}

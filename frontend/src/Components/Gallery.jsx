@@ -187,11 +187,6 @@ export default function Gallery() {
                 ))}
               </div>
             </div>
-
-            {/* ✅ Small note for mobile */}
-            <p className="mt-4 text-center text-xs xs:text-sm text-slate-500 font-medium">
-              Tap & hold to pause the slider.
-            </p>
           </div>
         </div>
       </div>
