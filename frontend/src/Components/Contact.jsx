@@ -85,7 +85,7 @@ const ContactForm = () => {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwTGN-QWyr2BPbV9NGUCWSTpcv9SO_PqQsiNxz-KSOQqoyhm3ZTVyYALMWg3fZYLWSX/exec",
+        `${import.meta.env.VITE_SCRIPT_URL}`,
         {
           method: "POST",
           mode: "no-cors",

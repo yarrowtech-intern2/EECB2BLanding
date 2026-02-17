@@ -25,6 +25,7 @@ const Header = () => {
   const location = useLocation();
 
   const mobileMenuRef = useRef(null);
+  const pendingScrollTargetRef = useRef(null);
 
   const navItems = [
     { name: "Home", id: "home" },
@@ -76,7 +77,13 @@ const Header = () => {
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflow = "";
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      if (pendingScrollTargetRef.current) {
+        const targetId = pendingScrollTargetRef.current;
+        pendingScrollTargetRef.current = null;
+        window.requestAnimationFrame(() => scrollToSection(targetId));
+      } else if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
     }
 
     return () => {
@@ -123,9 +130,8 @@ const Header = () => {
 
   const handleNavClick = useCallback(
     (item) => {
-      setMobileMenuOpen(false);
-
       if (item.route) {
+        setMobileMenuOpen(false);
         navigate(item.route);
         setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
         return;
@@ -133,10 +139,16 @@ const Header = () => {
 
       if (item.id) {
         setActiveItem(item.id);
+        if (mobileMenuOpen) {
+          pendingScrollTargetRef.current = item.id;
+          setMobileMenuOpen(false);
+          return;
+        }
         scrollToSection(item.id);
+        setMobileMenuOpen(false);
       }
     },
-    [navigate, scrollToSection]
+    [mobileMenuOpen, navigate, scrollToSection]
   );
 
   useEffect(() => {
