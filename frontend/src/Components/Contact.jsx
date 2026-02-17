@@ -183,7 +183,7 @@ const ContactForm = () => {
               {[
                 { title: "Quick Response", desc: "We respond within 24 hours", color: "bg-yellow-400" },
                 { title: "Free Consultation", desc: "No obligation demo & walkthrough", color: "bg-orange-400" },
-                { title: "Custom Solutions", desc: "Tailored to your institution's needs", color: "bg-amber-400" },
+                // { title: "Custom Solutions", desc: "Tailored to your institution's needs", color: "bg-amber-400" },
               ].map((item, i) => (
                 <div
                   key={i}
