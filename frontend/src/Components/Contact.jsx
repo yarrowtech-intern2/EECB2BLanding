@@ -115,10 +115,10 @@ const ContactForm = () => {
   };
 
   const fields = [
-    { name: "name", label: "Full Name", type: "text", icon: FaUser, placeholder: "John Doe" },
-    { name: "phone", label: "Phone Number", type: "tel", icon: FaPhone, placeholder: "9876543210" },
+    { name: "name", label: "Full Name", type: "text", icon: FaUser, placeholder: "Enter your full name" },
+    { name: "phone", label: "Phone Number", type: "tel", icon: FaPhone, placeholder: "10 digit mobile no" },
     { name: "email", label: "Email Address", type: "email", icon: FaEnvelope, placeholder: "you@example.com" },
-    { name: "institutionName", label: "Institution Name", type: "text", icon: FaBuilding, placeholder: "Your Institution" },
+    { name: "institutionName", label: "Institution Name", type: "text", icon: FaBuilding, placeholder:"Enter your institution name" },
   ];
 
   return (
