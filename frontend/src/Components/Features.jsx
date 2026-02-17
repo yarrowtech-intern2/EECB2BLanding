@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import featuresBg from "../assets/features.jpg";
+import featuresBg from "/Features.jpg";
 
 import {
   FaBrain,

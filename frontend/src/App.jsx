@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Toaster } from "react-hot-toast";
 
 import Home from "./Pages/Home";
 import Header from "./Components/Header";
@@ -30,7 +31,8 @@ function App() {
 
   return (
     <>
-      <Header />  
+      <Toaster position="bottom-right" toastOptions={{ duration: 4000 }} />
+      <Header />
 
       <main className="pt-[120px]">
         <Routes>

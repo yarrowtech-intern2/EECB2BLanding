@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import modulesBg from "../assets/modules.jpg";
+import modulesBg from "/Modules.jpg";
 
 import {
   FaSchool,
