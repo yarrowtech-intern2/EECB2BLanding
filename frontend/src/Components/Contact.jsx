@@ -26,8 +26,44 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   // ✅ show success
+  //   setSubmitted(true);
+
+  //   // ✅ clear form
+  //   setFormData({
+  //     name: "",
+  //     phone: "",
+  //     email: "",
+  //     institutionName: "",
+  //     institutionAddress: "",
+  //   });
+
+  //   // optional: auto hide success
+  //   setTimeout(() => {
+  //     setSubmitted(false);
+  //   }, 3000);
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const payload = { ...formData };
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbwTGN-QWyr2BPbV9NGUCWSTpcv9SO_PqQsiNxz-KSOQqoyhm3ZTVyYALMWg3fZYLWSX/exec",
+      {
+        method: "POST",
+        mode: "no-cors", // ✅ avoids CORS blocking
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
 
     // ✅ show success
     setSubmitted(true);
@@ -41,11 +77,13 @@ const ContactForm = () => {
       institutionAddress: "",
     });
 
-    // optional: auto hide success
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
-  };
+    setTimeout(() => setSubmitted(false), 3000);
+  } catch (err) {
+    console.error("Submit error:", err);
+    alert("Failed to submit. Check console.");
+  }
+};
+
 
   return (
     <section
