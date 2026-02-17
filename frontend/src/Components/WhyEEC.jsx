@@ -4,24 +4,42 @@ import "aos/dist/aos.css";
 
 import service from "../assets/service.jpg";
 
-import { FaChalkboardTeacher, FaBrain, FaSchool, FaHeart } from "react-icons/fa";
+import {
+  FaChalkboardTeacher,
+  FaBrain,
+  FaSchool,
+  FaArrowRight,
+} from "react-icons/fa";
 
 const features = [
   {
     icon: FaChalkboardTeacher,
     title: "LMS (Learning Management System)",
     desc: "Personalized study journeys for every class (3-10) with smart, adaptive content.",
+    color: "from-yellow-400 to-amber-500",
+    lightColor: "bg-yellow-400",
   },
   {
     icon: FaBrain,
     title: "AI & ML Intelligence",
     desc: "Track student progress, recommend what to study next, and highlight weak areas instantly.",
+    color: "from-amber-400 to-orange-500",
+    lightColor: "bg-amber-400",
   },
   {
     icon: FaSchool,
     title: "ERP System",
     desc: "End-to-end school operations from fees and HR to health records.",
+    color: "from-orange-400 to-red-400",
+    lightColor: "bg-orange-400",
   },
+];
+
+const stats = [
+  // { value: "100+", label: "Institutions" },
+  // { value: "50K+", label: "Students" },
+  // { value: "99%", label: "Uptime" },
+  // { value: "24/7", label: "Support" },
 ];
 
 const WhyEEC = () => {
@@ -35,8 +53,8 @@ const WhyEEC = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
-      {/* ✅ FULL BACKGROUND IMAGE (CLEAR) */}
+    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={service}
@@ -45,88 +63,113 @@ const WhyEEC = () => {
         />
       </div>
 
-      {/* ✅ LIGHT OVERLAY (so image stays visible) */}
-      <div className="absolute inset-0 bg-black/25" />
-
-      {/* OPTIONAL: slight color tone (very light) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#2b2f4c]/30 via-transparent to-[#2b2f4c]/30" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-          {/* LEFT SPACE (image visible) */}
-          <div className="hidden lg:block" />
-
-          {/* RIGHT CONTENT */}
-          <div>
-            {/* Heading */}
-            <div className="mb-8" data-aos="fade-up">
-              <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-                Why <span className="text-[#fbbf24]">EEC</span>?
-              </h2>
-
-              <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl">
-                The First Choice for{" "}
-                <span className="font-extrabold text-white">
-                  AI-Powered ERP & LMS Solutions
-                </span>{" "}
-                in Education. EEC transforms institutions from{" "}
-                <span className="font-extrabold text-[#fde047]">
-                  good to the best.
-                </span>
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* ==================== LEFT — Stats & Headline ==================== */}
+          <div data-aos="fade-right">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 text-sm font-bold text-yellow-400 mb-6">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+              Why Choose Us
             </div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {features.map((item, index) => {
-                const Icon = item.icon;
+            {/* Heading */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">
+              Why{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400">
+                EEC
+              </span>
+              ?
+            </h2>
 
-                return (
+            <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-lg mb-8">
+              The First Choice for{" "}
+              <span className="font-extrabold text-white">
+                AI-Powered ERP & LMS Solutions
+              </span>{" "}
+              in Education. EEC transforms institutions from{" "}
+              <span className="font-extrabold text-yellow-400">
+                good to the best.
+              </span>
+            </p>
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+              {stats.map((stat, i) => (
+                <div
+                  key={i}
+                  className="text-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all duration-300"
+                  data-aos="zoom-in"
+                  data-aos-delay={i * 100}
+                >
+                  <p className="text-2xl sm:text-3xl font-black text-yellow-400">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs sm:text-sm text-white/60 font-semibold mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("contact");
+                if (el) {
+                  const offset = el.getBoundingClientRect().top + window.scrollY - 90;
+                  window.scrollTo({ top: offset, behavior: "smooth" });
+                }
+              }}
+              className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 px-7 py-3.5 font-extrabold text-black shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:from-yellow-300 hover:to-amber-300 hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              Get Started
+              <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
+          </div>
+
+          {/* ==================== RIGHT — Feature Cards ==================== */}
+          <div className="space-y-5">
+            {features.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={index}
+                  data-aos="fade-left"
+                  data-aos-delay={index * 150}
+                  className="group relative rounded-2xl bg-white/[0.07] backdrop-blur-md border border-white/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.12] hover:border-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
+                >
+                  {/* Left accent bar */}
                   <div
-                    key={index}
-                    data-aos="fade-up"
-                    data-aos-delay={index * 120}
-                    className="
-                      rounded-2xl
-                      bg-[#50577a]/70
-                      border border-white/15
-                      shadow-[0_18px_45px_rgba(0,0,0,0.28)]
-                      p-6
-                      min-h-[190px]
-                      transition-all duration-300
-                      hover:-translate-y-1 hover:bg-[#565e86]/80
-                    "
-                  >
-                    {/* Top row */}
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="
-                          w-12 h-12 rounded-xl
-                          flex items-center justify-center
-                          text-[#fbbf24]
-                          bg-white/10
-                          border border-white/10
-                        "
-                      >
-                        <Icon className="text-2xl" />
-                      </div>
+                    className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${item.color} rounded-l-2xl`}
+                  />
 
-                      <div className="flex-1">
-                        <h3 className="text-white font-extrabold text-base sm:text-lg leading-snug">
-                          {item.title}
-                        </h3>
-
-                      </div>
+                  <div className="flex items-start gap-5">
+                    {/* Icon */}
+                    <div
+                      className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shrink-0 shadow-lg ring-4 ring-white/5 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="text-xl text-white" />
                     </div>
 
-                    {/* Description */}
-                    <p className="mt-4 text-white/85 text-sm leading-relaxed">
-                      {item.desc}
-                    </p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-white font-extrabold text-lg leading-snug mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
