@@ -29,7 +29,7 @@ const TopBar = () => {
   }, []);
 
   return (
-    <div className="w-full bg-yellow-400 border-b border-yellow-500 overflow-x-hidden">
+    <div className="w-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 border-b border-yellow-500 overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between gap-2 py-2">
           {/* LEFT: Phone + Email */}

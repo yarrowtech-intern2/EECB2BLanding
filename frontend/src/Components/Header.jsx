@@ -1,10 +1,17 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaPhoneAlt, FaEnvelope, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { BsDot } from "react-icons/bs";
+import {
+  FaBars,
+  FaTimes,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaLinkedinIn,
+  FaInstagram,
+  FaChevronRight,
+} from "react-icons/fa";
 import Logo from "../assets/eec.jpeg";
 
-import TopBar from "./TopBar"; // ✅ Import TopBar
+import TopBar from "./TopBar";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +62,6 @@ const Header = () => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll only when menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       const scrollY = window.scrollY;
@@ -156,205 +162,212 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-[999]">
-      {/* ✅ Separate Top Bar */}
       <TopBar />
 
       {/* ===================== MAIN NAV ===================== */}
       <div
-        className={`bg-white border-b border-neutral-200 transition-shadow duration-300 ${
-          isScrolled ? "shadow-md" : "shadow-sm"
+        className={`bg-white/95 backdrop-blur-md border-b transition-all duration-300 ${
+          isScrolled
+            ? "border-slate-200 shadow-[0_4px_20px_rgba(15,23,42,0.08)]"
+            : "border-slate-100 shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-2 xs:px-3 sm:px-4 lg:px-6">
-          <div className="flex items-center justify-between h-14 xs:h-16 sm:h-20 md:h-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
             {/* LOGO */}
             <button
               onClick={() => handleNavClick({ id: "home" })}
-              className="cursor-pointer flex items-center gap-2 sm:gap-3 hover:opacity-90 transition"
+              className="cursor-pointer flex items-center gap-2.5 sm:gap-3 hover:opacity-90 transition group"
             >
-              <div className="w-1 sm:w-1.5 h-8 xs:h-10 sm:h-12 md:h-14 bg-yellow-500 rounded-full"></div>
+              <div className="w-1 sm:w-1.5 h-9 sm:h-12 md:h-14 bg-gradient-to-b from-yellow-400 to-amber-500 rounded-full" />
               <img
                 src={Logo}
                 alt="EEC Logo"
-                className="h-8 xs:h-9 sm:h-11 md:h-14 lg:h-16 w-auto object-contain"
+                className="h-9 sm:h-11 md:h-14 lg:h-16 w-auto object-contain"
                 draggable="false"
               />
             </button>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center flex-shrink-0">
+            <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item, index) => {
                 const isActive = activeItem === item.id;
                 const isHover = hoveredItem === index;
 
                 return (
-                  <div
+                  <button
                     key={item.name}
-                    className="relative"
+                    onClick={() => handleNavClick(item)}
                     onMouseEnter={() => setHoveredItem(index)}
                     onMouseLeave={() => setHoveredItem(null)}
+                    className={`relative px-4 xl:px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200
+                      ${
+                        isActive
+                          ? "text-yellow-700 bg-yellow-50"
+                          : isHover
+                            ? "text-yellow-600 bg-yellow-50/60"
+                            : "text-slate-700 hover:text-slate-900"
+                      }`}
                   >
-                    <button
-                      onClick={() => handleNavClick(item)}
-                      className={`relative px-3 xl:px-6 py-8 font-extrabold text-[13px] xl:text-sm transition-colors whitespace-nowrap
-                        ${
-                          isActive
-                            ? "text-yellow-600"
-                            : "text-neutral-800 hover:text-yellow-600"
-                        }`}
-                    >
-                      <span
-                        className={`absolute inset-y-6 left-1 right-1 rounded-xl transition-colors duration-200
-                          ${
-                            isHover
-                              ? "bg-yellow-100"
-                              : isActive
-                              ? "bg-yellow-50"
-                              : "bg-transparent"
-                          }`}
-                      ></span>
+                    {item.name}
 
-                      <span className="relative z-10">{item.name}</span>
-
-                      <span
-                        className={`absolute left-1/2 -translate-x-1/2 bottom-4 h-[3px] rounded-full transition-all duration-300
-                          ${
-                            isActive
-                              ? "w-9 bg-yellow-400"
-                              : isHover
-                              ? "w-6 bg-yellow-300"
-                              : "w-0 bg-transparent"
-                          }`}
-                      ></span>
-                    </button>
-
-                    {index < navItems.length - 1 && (
-                      <BsDot className="absolute right-0 top-1/2 -translate-y-1/2 text-neutral-300 text-xl" />
-                    )}
-                  </div>
+                    {/* Active indicator bar */}
+                    <span
+                      className={`absolute left-1/2 -translate-x-1/2 -bottom-[13px] h-[3px] rounded-full transition-all duration-300 ${
+                        isActive
+                          ? "w-8 bg-gradient-to-r from-yellow-400 to-amber-400"
+                          : isHover
+                            ? "w-5 bg-yellow-300"
+                            : "w-0 bg-transparent"
+                      }`}
+                    />
+                  </button>
                 );
               })}
+
+              {/* CTA Button */}
+              <button
+                onClick={() => handleNavClick({ id: "contact" })}
+                className="ml-4 px-5 py-2.5 bg-gradient-to-r from-yellow-400 to-amber-400 text-black font-extrabold text-sm rounded-xl hover:from-yellow-300 hover:to-amber-300 hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_4px_15px_rgba(251,191,36,0.3)]"
+              >
+                Get Started
+              </button>
             </nav>
 
             {/* MOBILE MENU BUTTON */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 shrink-0"
+              className="lg:hidden w-11 h-11 sm:w-12 sm:h-12 shrink-0"
             >
-              <div className="w-full h-full bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-600 rounded-lg shadow-lg flex items-center justify-center transition">
+              <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 active:scale-95 rounded-xl shadow-[0_4px_15px_rgba(251,191,36,0.3)] flex items-center justify-center transition-all duration-200">
                 <FaBars className="text-black text-lg" />
               </div>
             </button>
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+      </div>
+
+      {/* ===================== MOBILE MENU ===================== */}
+      {/* Placed outside the backdrop-blur nav div to avoid stacking context issues */}
+      <div
+        className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ${
+          mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
         <div
-          className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ${
-            mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          onClick={() => setMobileMenuOpen(false)}
+          className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100" : "opacity-0"
           }`}
+        />
+
+        {/* Panel */}
+        <div
+          ref={mobileMenuRef}
+          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out
+            ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
-          <div
-            onClick={() => setMobileMenuOpen(false)}
-            className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-              mobileMenuOpen ? "opacity-100" : "opacity-0"
-            }`}
-          />
-
-          <div
-            ref={mobileMenuRef}
-            className={`absolute right-0 top-0 h-full w-[85%] xs:w-[80%] sm:w-[75%] max-w-sm bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out
-              ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-4 border-b border-neutral-200 bg-yellow-50">
-              <div className="flex items-center gap-2">
-                <img
-                  src={Logo}
-                  alt="EEC Logo"
-                  className="h-10 w-auto object-contain"
-                  draggable="false"
-                />
-                <p className="font-black text-base text-neutral-900">Menu</p>
-              </div>
-
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 shrink-0"
-              >
-                <div className="w-full h-full bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-600 rounded-lg shadow-lg flex items-center justify-center transition">
-                  <FaTimes className="text-black text-lg" />
-                </div>
-              </button>
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-gradient-to-r from-yellow-50 to-amber-50">
+            <div className="flex items-center gap-3">
+              <img
+                src={Logo}
+                alt="EEC Logo"
+                className="h-10 w-auto object-contain"
+                draggable="false"
+              />
             </div>
 
-            {/* Items */}
-            <div className="flex-1 overflow-y-auto p-4">
-              <div className="grid gap-2">
-                {navItems.map((item) => {
-                  const isActive = activeItem === item.id;
-
-                  return (
-                    <button
-                      key={item.name}
-                      onClick={() => handleNavClick(item)}
-                      className={`h-12 rounded-xl border-2 font-extrabold transition-all text-left px-4 text-sm
-                        ${
-                          isActive
-                            ? "border-yellow-500 bg-yellow-50 text-yellow-700 shadow-sm"
-                            : "border-neutral-200 bg-white text-neutral-800 hover:bg-yellow-50 hover:border-yellow-300"
-                        }`}
-                    >
-                      {item.name}
-                    </button>
-                  );
-                })}
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-10 h-10 shrink-0"
+            >
+              <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 rounded-xl shadow-md flex items-center justify-center transition-all duration-200">
+                <FaTimes className="text-black text-base" />
               </div>
+            </button>
+          </div>
+
+          {/* Nav items */}
+          <div className="flex-1 overflow-y-auto px-5 py-5">
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 px-1">
+              Navigation
+            </p>
+            <div className="space-y-1.5">
+              {navItems.map((item) => {
+                const isActive = activeItem === item.id;
+
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavClick(item)}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl font-bold text-sm transition-all duration-200
+                      ${
+                        isActive
+                          ? "bg-gradient-to-r from-yellow-400 to-amber-400 text-black shadow-[0_4px_15px_rgba(251,191,36,0.25)]"
+                          : "bg-slate-50 text-slate-700 hover:bg-yellow-50 hover:text-yellow-700"
+                      }`}
+                  >
+                    {item.name}
+                    <FaChevronRight
+                      className={`text-xs transition-colors ${
+                        isActive ? "text-black/50" : "text-slate-300"
+                      }`}
+                    />
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Footer */}
-            <div className="mt-auto p-4 border-t border-neutral-200 bg-yellow-50 space-y-3">
-              <a
-                href={`tel:${phone}`}
-                className="flex items-center gap-3 font-extrabold text-neutral-900 hover:text-yellow-700 transition"
-              >
-                <FaPhoneAlt className="text-yellow-600 text-base shrink-0" />
-                <span className="text-sm">{phone}</span>
-              </a>
+          {/* Footer — Contact info */}
+          <div className="mt-auto p-5 border-t border-slate-100 bg-gradient-to-r from-yellow-50 to-amber-50 space-y-3">
+            <a
+              href={`tel:${phone}`}
+              className="flex items-center gap-3 text-slate-800 hover:text-yellow-700 transition"
+            >
+              <div className="w-9 h-9 bg-white rounded-lg border border-slate-200 flex items-center justify-center shadow-sm shrink-0">
+                <FaPhoneAlt className="text-yellow-600 text-xs" />
+              </div>
+              <span className="text-sm font-bold">{phone}</span>
+            </a>
 
+            <a
+              href={isMobile ? mailtoLink : gmailLink}
+              target={isMobile ? "_self" : "_blank"}
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-slate-800 hover:text-yellow-700 transition"
+            >
+              <div className="w-9 h-9 bg-white rounded-lg border border-slate-200 flex items-center justify-center shadow-sm shrink-0">
+                <FaEnvelope className="text-yellow-600 text-xs" />
+              </div>
+              <span className="text-sm font-bold break-all">{email}</span>
+            </a>
+
+            <div className="flex items-center gap-2 pt-2">
               <a
-                href={isMobile ? mailtoLink : gmailLink}
-                target={isMobile ? "_self" : "_blank"}
+                href="https://www.linkedin.com/in/electroniceducare-eec-413ba6328/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 font-extrabold text-neutral-900 hover:text-yellow-700 transition"
+                className="w-9 h-9"
               >
-                <FaEnvelope className="text-yellow-600 text-base shrink-0" />
-                <span className="text-sm break-all">{email}</span>
+                <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 rounded-lg flex items-center justify-center transition shadow-md">
+                  <FaLinkedinIn className="text-black text-sm" />
+                </div>
               </a>
 
-              <div className="flex items-center gap-3 pt-1">
-                <a
-                  href="https://www.linkedin.com/in/electroniceducare-eec-413ba6328/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10"
-                >
-                  <div className="w-full h-full bg-yellow-500 hover:bg-yellow-400 rounded-lg flex items-center justify-center transition shadow-lg">
-                    <FaLinkedinIn className="text-black text-lg" />
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.instagram.com/its_eec_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10"
-                >
-                  <div className="w-full h-full bg-yellow-500 hover:bg-yellow-400 rounded-lg flex items-center justify-center transition shadow-lg">
-                    <FaInstagram className="text-black text-lg" />
-                  </div>
-                </a>
-              </div>
+              <a
+                href="https://www.instagram.com/its_eec_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9"
+              >
+                <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 rounded-lg flex items-center justify-center transition shadow-md">
+                  <FaInstagram className="text-black text-sm" />
+                </div>
+              </a>
             </div>
           </div>
         </div>
