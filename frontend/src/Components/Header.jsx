@@ -10,6 +10,7 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import Logo from "../assets/eec.jpeg";
+// import Logo from "/logo.png";
 
 import TopBar from "./TopBar";
 

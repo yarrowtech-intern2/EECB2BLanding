@@ -102,14 +102,14 @@ const Hero = () => {
 
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-black leading-[1.08]">
-                EEC — Educate.
+                EEC — Electronic
                 <br />
-                Empower. Connect
+                Educare
               </h1>
 
               {/* Typing */}
               <div className="min-h-[70px] sm:min-h-[85px]">
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-yellow-500">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-yellow-700">
                   {typedText}
                   <span className="ml-1 inline-block w-[10px] animate-pulse text-[#c2410c]">
                     |
@@ -118,7 +118,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <p className="max-w-xl text-base sm:text-lg text-gray-700 leading-relaxed">
+            <p className="max-w-xl text-base sm:text-lg text-gray-700 font-bold leading-relaxed">
               Where learning is not memorized, but truly lived — adaptive
               modules, holistic growth, and smart school solutions.
             </p>
