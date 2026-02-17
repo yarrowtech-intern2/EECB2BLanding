@@ -39,7 +39,7 @@ const TopBar = () => {
               href={`tel:${phoneCall}`}
               className="flex items-center gap-2 font-extrabold text-black hover:opacity-80 transition shrink-0"
             >
-              <div className="w-8 h-8 bg-white border border-yellow-600 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+              <div className="w-8 h-8 bg-white border border-yellow-600 rounded-full flex items-center justify-center shadow-sm shrink-0">
                 <FaPhoneAlt className="text-yellow-700 text-xs" />
               </div>
               <span className="hidden sm:inline text-sm whitespace-nowrap">
@@ -54,7 +54,7 @@ const TopBar = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-extrabold text-black hover:opacity-80 transition min-w-0 overflow-hidden"
             >
-              <div className="w-8 h-8 bg-white border border-yellow-600 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+              <div className="w-8 h-8 bg-white border border-yellow-600 rounded-full flex items-center justify-center shadow-sm shrink-0">
                 <FaEnvelope className="text-yellow-700 text-xs" />
               </div>
 
@@ -74,7 +74,7 @@ const TopBar = () => {
               aria-label="LinkedIn"
               className="w-8 h-8"
             >
-              <div className="w-full h-full bg-white border border-yellow-600 rounded-lg flex items-center justify-center hover:bg-yellow-50 transition shadow-sm">
+              <div className="w-full h-full bg-white border border-yellow-600 rounded-full flex items-center justify-center hover:bg-yellow-50 transition shadow-sm">
                 <FaLinkedinIn className="text-yellow-700 text-xs" />
               </div>
             </a>
@@ -86,7 +86,7 @@ const TopBar = () => {
               aria-label="Instagram"
               className="w-8 h-8"
             >
-              <div className="w-full h-full bg-white border border-yellow-600 rounded-lg flex items-center justify-center hover:bg-yellow-50 transition shadow-sm">
+              <div className="w-full h-full bg-white border border-yellow-600 rounded-full flex items-center justify-center hover:bg-yellow-50 transition shadow-sm">
                 <FaInstagram className="text-yellow-700 text-xs" />
               </div>
             </a>
