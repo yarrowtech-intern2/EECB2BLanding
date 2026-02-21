@@ -264,7 +264,7 @@ const ContactForm = () => {
                 {/* Institution Address — full width */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
-                    Institution Address <span className="text-yellow-500">*</span>
+                    Institution Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <div
