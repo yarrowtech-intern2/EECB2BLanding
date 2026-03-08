@@ -10,9 +10,6 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import Logo from "../assets/eec.jpeg";
-// import Logo from "/logo.png";
-
-import TopBar from "./TopBar";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -175,11 +172,9 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-[999]">
-      <TopBar />
-
       {/* ===================== MAIN NAV ===================== */}
       <div
-        className={`bg-white/95 backdrop-blur-md border-b transition-all duration-300 ${
+        className={`bg-white border-b transition-all duration-300 ${
           isScrolled
             ? "border-slate-200 shadow-[0_4px_20px_rgba(15,23,42,0.08)]"
             : "border-slate-100 shadow-sm"
@@ -240,7 +235,6 @@ const Header = () => {
 
               {/* CTA Button */}
               <button
-                onClick={() => handleNavClick({ id: "contact" })}
                 className="ml-4 px-5 py-2.5 bg-gradient-to-r from-yellow-400 to-amber-400 text-black font-extrabold text-sm rounded-xl hover:from-yellow-300 hover:to-amber-300 hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_4px_15px_rgba(251,191,36,0.3)]"
               >
                 Get Started

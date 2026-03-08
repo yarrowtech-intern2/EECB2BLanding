@@ -15,7 +15,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <section id="about" className="relative w-full overflow-hidden bg-white">
+    <section id="about" className="relative w-full overflow-hidden bg-white pt-20 sm:pt-24 md:pt-28 lg:pt-32">
       {/* ===================== */}
       {/* TOP IMAGE BANNER PART */}
       {/* ===================== */}
@@ -103,9 +103,9 @@ const AboutUs = () => {
                   boundaries — a world where every learner, every teacher, and
                   every institution is empowered with technology that makes
                   learning smarter, seamless, and truly transformative.
-                  Our vision is to be the catalyst of chenge in the education ecosystem,
-                  uniti schools and students through a platfrom that fosters knowledge, creativity, well-being,
-                  and growth. We aim to shape a generation of learns who are not only 
+                  Our vision is to be the catalyst of change in the education ecosystem,
+                  uniting schools and students through a platform that fosters knowledge, creativity, well-being,
+                  and growth. We aim to shape a generation of learners who are not only 
                   academically excellent but also confident, emotionally strong, and future-ready.
                 </p>
               </div>
@@ -170,7 +170,7 @@ const AboutUs = () => {
                         Scalable & Inclusive Innovation:
                       </span>{" "}
                       Offering solutions that are affordable, flexible, and
-                      impactful, ensuring quality education forlearns across all backgounds.
+                      impactful, ensuring quality education for learners across all backgrounds.
                     </span>
                   </li>
 
@@ -181,7 +181,7 @@ const AboutUs = () => {
                         Future-Driven Excellence:
                       </span>{" "}
                       Preparing institutions and learners to thrive in a rapidly
-                      changing digital-first world, where education is not just taught but truly exprienced.
+                      changing digital-first world, where education is not just taught but truly experienced.
                     </span>
                   </li>
                 </ul>

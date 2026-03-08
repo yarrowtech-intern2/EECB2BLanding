@@ -1,331 +1,379 @@
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import {
-  FaArrowRight,
-  FaPlay,
-  FaCheckCircle,
-  FaStar,
-  FaSchool,
-  FaChartLine,
-} from "react-icons/fa";
-
-import b2bImg from "../assets/b2b.png";
-import lmsImg from "../assets/LMS.jpg";
-import erpImg from "../assets/ERP.jpg";
-
-const rotatingTexts = [
-  "Learning Management System",
-  "Smart Learning with ML Insights",
-  "AI-Driven LMS & ERP Solution",
-  "Automated Exam Software",
-  "Futuristic EdTech Platform",
-];
+import React, { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import student from "../assets/student.png";
+import google from "../assets/google.png";
 
 const Hero = () => {
-  const [textIndex, setTextIndex] = useState(0);
-  const [typedText, setTypedText] = useState("");
+  const mountRef = useRef(null);
+  const [rotatingIndex, setRotatingIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [activeFlip, setActiveFlip] = useState(null);
+  const [charIndex, setCharIndex] = useState(0);
 
-  const toggleFlip = (key) => {
-    setActiveFlip((prev) => (prev === key ? null : key));
-  };
+  const rotatingTexts = [
+    "Learning Management System",
+    "Smart Learning with ML Insights",
+    "AI-Driven LMS & ERP Solution",
+    "Automated Exam Software",
+    "Futuristic EdTech Platform",
+  ];
+
+  // Typing effect
+  useEffect(() => {
+    const currentText = rotatingTexts[rotatingIndex];
+    let typingTimer;
+
+    if (!isDeleting) {
+      // Typing in
+      if (charIndex < currentText.length) {
+        typingTimer = setTimeout(() => {
+          setDisplayedText(currentText.substring(0, charIndex + 1));
+          setCharIndex(charIndex + 1);
+        }, 80); // Typing speed
+      } else {
+        // Finished typing, wait before deleting
+        typingTimer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000); // Pause before deleting
+      }
+    } else {
+      // Deleting
+      if (charIndex > 0) {
+        typingTimer = setTimeout(() => {
+          setDisplayedText(currentText.substring(0, charIndex - 1));
+          setCharIndex(charIndex - 1);
+        }, 40); // Deleting speed
+      } else {
+        // Move to next text
+        setIsDeleting(false);
+        setRotatingIndex((prev) => (prev + 1) % rotatingTexts.length);
+        setCharIndex(0);
+      }
+    }
+
+    return () => clearTimeout(typingTimer);
+  }, [charIndex, isDeleting, rotatingIndex, rotatingTexts]);
 
   useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: false,
-      mirror: true,
-      offset: 120,
-    });
+    if (!mountRef.current) return;
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf3efe6);
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
+    renderer.setPixelRatio(window.devicePixelRatio);
+    mountRef.current.appendChild(renderer.domElement);
+
+    // Create floating 3D shapes
+    const shapes = [];
+
+    // Create icosahedron (geometric shape)
+    const geometry1 = new THREE.IcosahedronGeometry(0.8, 4);
+    const material1 = new THREE.MeshPhongMaterial({ color: 0x16a34a }); // Green
+    const shape1 = new THREE.Mesh(geometry1, material1);
+    shape1.position.set(-3, 2, 0);
+    scene.add(shape1);
+    shapes.push({ mesh: shape1, rotSpeed: 0.005 });
+
+    // Create octahedron (orange shape)
+    const geometry2 = new THREE.OctahedronGeometry(1, 2);
+    const material2 = new THREE.MeshPhongMaterial({ color: 0xff6b35 }); // Orange
+    const shape2 = new THREE.Mesh(geometry2, material2);
+    shape2.position.set(3, -1.5, 0);
+    scene.add(shape2);
+    shapes.push({ mesh: shape2, rotSpeed: 0.007 });
+
+    // Create tetrahedron (yellow shape)
+    const geometry3 = new THREE.TetrahedronGeometry(1, 2);
+    const material3 = new THREE.MeshPhongMaterial({ color: 0xfbbf24 }); // Yellow
+    const shape3 = new THREE.Mesh(geometry3, material3);
+    shape3.position.set(0, 3, -1);
+    scene.add(shape3);
+    shapes.push({ mesh: shape3, rotSpeed: 0.006 });
+
+    // Lighting
+    const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    light1.position.set(5, 5, 5);
+    scene.add(light1);
+
+    const light2 = new THREE.DirectionalLight(0xff6b35, 0.4);
+    light2.position.set(-5, -5, 3);
+    scene.add(light2);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+
+    // Animation loop
+    let animationId;
+    const animate = () => {
+      animationId = requestAnimationFrame(animate);
+
+      shapes.forEach((item, index) => {
+        item.mesh.rotation.x += item.rotSpeed;
+        item.mesh.rotation.y += item.rotSpeed * 1.3;
+        item.mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.005;
+      });
+
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    // Handle resize
+    const handleResize = () => {
+      if (!mountRef.current) return;
+      const width = mountRef.current.clientWidth;
+      const height = mountRef.current.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationId);
+      renderer.dispose();
+      if (mountRef.current && mountRef.current.contains(renderer.domElement)) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+    };
   }, []);
 
-  useEffect(() => {
-    const fullText = rotatingTexts[textIndex];
-    const typingSpeed = isDeleting ? 35 : 65;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        const next = fullText.substring(0, typedText.length + 1);
-        setTypedText(next);
-        if (next === fullText) {
-          setTimeout(() => setIsDeleting(true), 1200);
-        }
-      } else {
-        const next = fullText.substring(0, typedText.length - 1);
-        setTypedText(next);
-        if (next === "") {
-          setIsDeleting(false);
-          setTextIndex((prev) => (prev + 1) % rotatingTexts.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [typedText, isDeleting, textIndex]);
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (!section) return;
-    const headerOffset = 90;
-    const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+  const scrollToContact = () => {
+    const section = document.getElementById("contact");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="home" className="relative w-full overflow-hidden pb-20 pt-0">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50/30 to-white" />
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-yellow-300/40 blur-[160px]" />
-        <div className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-amber-400/30 blur-[160px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-orange-200/20 blur-[120px]" />
-      </div>
+    <section
+      id="home"
+      className="relative w-full min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] md:min-h-[calc(100vh-112px)] flex items-center overflow-hidden"
+      style={{
+        background: "#f5f1eb",
+        marginTop: 0
+      }}
+    >
+      {/* 3D Background Canvas */}
+      <div
+        ref={mountRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ opacity: 0.3, pointerEvents: "none" }}
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          {/* ==================== LEFT CONTENT ==================== */}
-          <div className="space-y-7" data-aos="fade-right">
-            {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-bold text-yellow-700 border border-yellow-200/60">
-              <FaStar className="text-yellow-500 text-xs" />
-              {/* Trusted by 100+ Institutions */}
-              Trusted by parteners
-            </div>
-
-            {/* Main heading */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-slate-900 leading-[1.05]">
-                EEC —{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500">
-                  Electronic
+      {/* Content */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center py-8 sm:py-12 lg:py-20">
+            
+            {/* LEFT TEXT SECTION */}
+            <div className="flex flex-col justify-center order-2 lg:order-1">
+              {/* Badge */}
+              <div className="inline-block mb-4 sm:mb-6">
+                <span className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border-2 border-yellow-400">
+                  Trusted by Partners
                 </span>
-                <br />
-                Educare
-              </h1>
+              </div>
 
-              {/* Typing effect */}
-              <div className="min-h-[60px] sm:min-h-[72px]">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-amber-600">
-                  {typedText}
-                  <span className="ml-1 inline-block w-[3px] h-[1em] bg-amber-500 animate-pulse align-middle rounded-full" />
+              {/* Heading */}
+              <div className="mb-6 sm:mb-8">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-2 text-black">
+                  EEC
+                </h1>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-yellow-500 leading-tight">
+                  Electronic Educare
                 </h2>
               </div>
-            </div>
 
-            {/* Description */}
-            <p className="max-w-lg text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
-              Where learning is not memorized, but truly lived — adaptive
-              modules, holistic growth, and smart school solutions powered by AI.
-            </p>
+              {/* Typing Effect Text */}
+              <div className="mb-6 sm:mb-8 min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] lg:min-h-[3rem] overflow-hidden">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-yellow-500 tracking-wider break-words">
+                  {displayedText}
+                  <span className="animate-pulse">|</span>
+                </h2>
+              </div>
 
-            {/* Feature pills */}
-            <div className="flex flex-wrap gap-3">
-              {[
-                { icon: FaCheckCircle, text: "AI-Powered Learning" },
-                { icon: FaSchool, text: "Complete ERP" },
-                { icon: FaChartLine, text: "Real-Time Analytics" },
-              ].map(({ icon: Icon, text }, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-bold text-slate-700 border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.05)]"
+              {/* Description */}
+              <p className="text-sm sm:text-base md:text-base text-black mb-6 sm:mb-8 max-w-full sm:max-w-2xl lg:max-w-lg leading-relaxed font-medium">
+                Where learning is not memorized, but truly lived-- adaptive modules, holistic growth, and smart school solutions powered by AI.
+              </p>
+
+              {/* Button */}
+              <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
+                <button
+                  onClick={scrollToContact}
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 transition-all text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start border-2 border-black"
                 >
-                  <Icon className="text-yellow-500 text-xs" />
-                  {text}
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 px-7 py-3.5 font-extrabold text-black shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:from-yellow-300 hover:to-amber-300 hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] hover:scale-105 active:scale-95 transition-all duration-200"
-              >
-                Get Started
-                <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-200" />
-              </button>
-
-              <button
-                onClick={() => scrollToSection("features")}
-                className="group inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 font-bold text-slate-700 border-2 border-slate-200 hover:border-yellow-300 hover:text-yellow-700 hover:bg-yellow-50 transition-all duration-200 shadow-sm"
-              >
-                <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center group-hover:bg-yellow-200 transition-colors">
-                  <FaPlay className="text-yellow-600 text-[10px] ml-0.5" />
-                </div>
-                Explore Features
-              </button>
-            </div>
-
-            {/* Social proof */}
-            <div className="flex items-center gap-4 pt-3">
-              <div className="flex -space-x-2.5">
-                {["#fbbf24", "#f59e0b", "#d97706", "#b45309"].map(
-                  (color, i) => (
-                    <div
-                      key={i}
-                      className="w-9 h-9 rounded-full border-2 border-white shadow-sm flex items-center justify-center text-white text-xs font-bold"
-                      style={{ backgroundColor: color }}
-                    >
-                      {["S", "A", "R", "P"][i]}
-                    </div>
-                  )
-                )}
-              </div>
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400 text-xs" />
-                  ))}
-                </div>
-                <p className="text-xs text-slate-500 font-semibold mt-0.5">
-                  Loved by educators & partners
-                </p>
+                  Start Free Trial
+                </button>
               </div>
             </div>
-          </div>
 
-          {/* ==================== RIGHT CONTENT ==================== */}
-          <div className="w-full" data-aos="fade-left">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Tall B2B image */}
+            {/* RIGHT VISUAL SECTION */}
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+              {/* Decorative circles - Responsive */}
+              <div className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-4 border-yellow-200 rounded-full opacity-30"></div>
+              <div className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] border-4 border-yellow-100 rounded-full opacity-20"></div>
+
+              {/* Green Shape - Top Right - Responsive */}
               <div
-                className="md:row-span-2 rounded-3xl border-4 border-white bg-white shadow-[0_20px_50px_rgba(15,23,42,0.12)] overflow-hidden ring-1 ring-yellow-200/40 group"
-                data-aos="zoom-in"
-              >
-                <div className="relative h-[420px] md:h-[520px] w-full overflow-hidden">
-                  <img
-                    src={b2bImg}
-                    alt="EEC B2B"
-                    className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 shadow-lg">
-                      <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center">
-                        <FaStar className="text-white text-xs" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-extrabold text-slate-900">
-                          B2B Platform
-                        </p>
-                        <p className="text-[11px] text-slate-500 font-semibold">
-                          Partner ecosystem
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                className="absolute w-40 h-32 sm:w-56 sm:h-44 md:w-64 md:h-48 lg:w-72 lg:h-56 bg-[#16a34a] rounded-2xl sm:rounded-3xl lg:rounded-[40px] opacity-90 hidden sm:block"
+                style={{
+                  right: "10px",
+                  top: "20px",
+                  transform: "skewY(-5deg) rotate(15deg)",
+                  animation: "float 5s ease-in-out infinite",
+                }}
+              ></div>
 
-              {/* LMS Flip Card */}
+              {/* Orange Shape - Bottom Right - Responsive */}
               <div
-                onClick={() => toggleFlip("lms")}
-                className="cursor-pointer [perspective:1200px]"
-                data-aos="fade-up"
-                data-aos-delay="100"
+                className="absolute w-36 h-28 sm:w-52 sm:h-40 md:w-60 md:h-48 lg:w-64 lg:h-52 bg-[#FF6B35] rounded-2xl sm:rounded-3xl lg:rounded-[40px] opacity-90 hidden sm:block"
+                style={{
+                  right: "-10px",
+                  bottom: "20px",
+                  transform: "skewY(-5deg) rotate(8deg)",
+                  animation: "float 6s ease-in-out infinite 0.3s",
+                }}
+              ></div>
+
+              {/* Yellow Shape - Left - Responsive */}
+              <div
+                className="absolute w-32 h-40 sm:w-48 sm:h-56 md:w-52 md:h-60 lg:w-56 lg:h-64 bg-[#FBBF24] rounded-2xl sm:rounded-3xl lg:rounded-[30px] opacity-95 hidden sm:block"
+                style={{
+                  left: "-15px",
+                  top: "40px",
+                  transform: "rotate(-12deg)",
+                  animation: "float 5.5s ease-in-out infinite 0.1s",
+                }}
+              ></div>
+
+              {/* ORBITAL CONTAINER - Icons rotating around student - Responsive */}
+              <div 
+                className="absolute flex items-center justify-center"
+                style={{
+                  width: "clamp(280px, 80vw, 600px)",
+                  height: "clamp(280px, 80vw, 600px)",
+                  animation: "orbit 25s linear infinite",
+                }}
               >
+                {/* Orbital track circle - subtle */}
+                <div className="absolute rounded-full border-2 border-dashed border-gray-300 opacity-20"
+                  style={{
+                    width: "clamp(200px, 60vw, 400px)",
+                    height: "clamp(200px, 60vw, 400px)",
+                  }}
+                ></div>
+
+                {/* Icon 1 - Top - Checkmark */}
                 <div
-                  className={`relative h-[250px] w-full transition-transform duration-700 [transform-style:preserve-3d] ${
-                    activeFlip === "lms" ? "[transform:rotateY(180deg)]" : ""
-                  }`}
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl font-bold border-3 sm:border-4 border-yellow-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  style={{
+                    top: "0%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
                 >
-                  {/* FRONT */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-white bg-white shadow-[0_15px_40px_rgba(15,23,42,0.10)] overflow-hidden ring-1 ring-yellow-200/40 [backface-visibility:hidden] group">
-                    <img
-                      src={lmsImg}
-                      alt="LMS"
-                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-xl font-black text-white">LMS</h3>
-                          <p className="text-white/80 font-semibold text-xs">
-                            Tap to explore
-                          </p>
-                        </div>
-                        <div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                          <FaArrowRight className="text-white text-xs" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* BACK */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-white bg-gradient-to-br from-yellow-50 via-white to-amber-50 shadow-[0_15px_40px_rgba(15,23,42,0.10)] ring-1 ring-yellow-200/40 p-6 flex flex-col justify-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center mb-3">
-                      <FaSchool className="text-white text-sm" />
-                    </div>
-                    <h3 className="text-lg font-black text-slate-900">
-                      Learning Management System
-                    </h3>
-                    <p className="mt-2 text-slate-600 font-medium leading-relaxed text-sm">
-                      Personalized study journeys for every class (3-10) with
-                      smart, adaptive content.
-                    </p>
-                  </div>
+                  ✓
                 </div>
-              </div>
 
-              {/* ERP Flip Card */}
-              <div
-                onClick={() => toggleFlip("erp")}
-                className="cursor-pointer [perspective:1200px]"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
+                {/* Icon 2 - Right - Google */}
                 <div
-                  className={`relative h-[250px] w-full transition-transform duration-700 [transform-style:preserve-3d] ${
-                    activeFlip === "erp" ? "[transform:rotateY(180deg)]" : ""
-                  }`}
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center border-3 sm:border-4 border-blue-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer overflow-hidden p-1.5 sm:p-2"
+                  style={{
+                    right: "0%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }}
                 >
-                  {/* FRONT */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-white bg-white shadow-[0_15px_40px_rgba(15,23,42,0.10)] overflow-hidden ring-1 ring-yellow-200/40 [backface-visibility:hidden] group">
-                    <img
-                      src={erpImg}
-                      alt="ERP"
-                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-xl font-black text-white">ERP</h3>
-                          <p className="text-white/80 font-semibold text-xs">
-                            Tap to explore
-                          </p>
-                        </div>
-                        <div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                          <FaArrowRight className="text-white text-xs" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <img src={google} alt="google" className="w-full h-full object-contain" />
+                </div>
 
-                  {/* BACK */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-white bg-gradient-to-br from-yellow-50 via-white to-amber-50 shadow-[0_15px_40px_rgba(15,23,42,0.10)] ring-1 ring-yellow-200/40 p-6 flex flex-col justify-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mb-3">
-                      <FaChartLine className="text-white text-sm" />
-                    </div>
-                    <h3 className="text-lg font-black text-slate-900">
-                      ERP System
-                    </h3>
-                    <p className="mt-2 text-slate-600 font-medium leading-relaxed text-sm">
-                      End-to-end school operations from fees and HR to health
-                      records — all in one place.
-                    </p>
-                  </div>
+                {/* Icon 3 - Bottom - Trophy */}
+                <div
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl border-3 sm:border-4 border-orange-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  style={{
+                    bottom: "0%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  🏆
+                </div>
+
+                {/* Icon 4 - Left - Books */}
+                <div
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl border-3 sm:border-4 border-purple-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  style={{
+                    left: "0%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  📚
                 </div>
               </div>
+
+              {/* Student Image - Center (z-20) - Responsive */}
+              <img
+                src={student}
+                alt="student"
+                className="relative z-20 w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[500px] drop-shadow-lg sm:drop-shadow-xl object-contain"
+              />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 w-full h-20 sm:h-24 md:h-32 bg-gradient-to-t from-[#f5f1eb] to-transparent pointer-events-none" />
+
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+
+        @keyframes orbit {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        /* Responsive text sizing */
+        @media (max-width: 640px) {
+          h1 {
+            line-height: 1.2;
+          }
+        }
+
+        @media (max-width: 480px) {
+          h1 {
+            line-height: 1.15;
+          }
+        }
+      `}</style>
     </section>
   );
 };
