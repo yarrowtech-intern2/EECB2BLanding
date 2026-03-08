@@ -9,6 +9,7 @@ const Hero = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const rotatingTexts = [
     "Learning Management System",
@@ -17,6 +18,16 @@ const Hero = () => {
     "Automated Exam Software",
     "Futuristic EdTech Platform",
   ];
+
+  // Detect mobile devices
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Typing effect
   useEffect(() => {
@@ -161,53 +172,67 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] md:min-h-[calc(100vh-112px)] flex items-center overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         background: "#f5f1eb",
-        marginTop: 0
+        paddingTop: "80px",
+        paddingBottom: "40px",
+        boxSizing: "border-box",
       }}
     >
-      {/* 3D Background Canvas */}
-      <div
-        ref={mountRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.3, pointerEvents: "none" }}
-      />
+      {/* 3D Background Canvas - Hidden on very small screens for performance */}
+      {!isMobile && (
+        <div
+          ref={mountRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ opacity: 0.3, pointerEvents: "none" }}
+        />
+      )}
+
+      {/* Fallback gradient background for mobile */}
+      {isMobile && (
+        <div
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{
+            background: "linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%)",
+          }}
+        />
+      )}
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center py-8 sm:py-12 lg:py-20">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-8">
+        <div className="max-w-[1400px] w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
             
             {/* LEFT TEXT SECTION */}
-            <div className="flex flex-col justify-center order-2 lg:order-1">
+            <div className="flex flex-col justify-center order-2 lg:order-1 w-full">
               {/* Badge */}
-              <div className="inline-block mb-4 sm:mb-6">
-                <span className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border-2 border-yellow-400">
+              <div className="inline-block mb-4 sm:mb-6 self-start">
+                <span className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border-2 border-yellow-400 inline-block">
                   Trusted by Partners
                 </span>
               </div>
 
               {/* Heading */}
-              <div className="mb-6 sm:mb-8">
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-2 text-black">
+              <div className="mb-6 sm:mb-8 mt-4 sm:mt-0">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight sm:leading-tight md:leading-tight lg:leading-none mb-1 sm:mb-2 text-black break-words">
                   EEC
                 </h1>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-yellow-500 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-yellow-500 leading-tight break-words">
                   Electronic Educare
                 </h2>
               </div>
 
               {/* Typing Effect Text */}
-              <div className="mb-6 sm:mb-8 min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] lg:min-h-[3rem] overflow-hidden">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-yellow-500 tracking-wider break-words">
+              <div className="mb-6 sm:mb-8 mt-4 sm:mt-6 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] lg:min-h-[3.5rem] overflow-hidden">
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-yellow-500 tracking-wide break-words">
                   {displayedText}
-                  <span className="animate-pulse">|</span>
-                </h2>
+                  <span className="animate-pulse ml-1">|</span>
+                </h3>
               </div>
 
               {/* Description */}
-              <p className="text-sm sm:text-base md:text-base text-black mb-6 sm:mb-8 max-w-full sm:max-w-2xl lg:max-w-lg leading-relaxed font-medium">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-black mb-6 sm:mb-8 max-w-full leading-relaxed font-medium">
                 Where learning is not memorized, but truly lived-- adaptive modules, holistic growth, and smart school solutions powered by AI.
               </p>
 
@@ -215,7 +240,8 @@ const Hero = () => {
               <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
                 <button
                   onClick={scrollToContact}
-                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 transition-all text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start border-2 border-black"
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2 border-black w-full sm:w-auto text-center"
+                  aria-label="Start Free Trial"
                 >
                   Start Free Trial
                 </button>
@@ -223,39 +249,60 @@ const Hero = () => {
             </div>
 
             {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[380px] md:min-h-[480px] lg:min-h-[600px] mt-6 sm:mt-8 lg:mt-0">
               {/* Decorative circles - Responsive */}
-              <div className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-4 border-yellow-200 rounded-full opacity-30"></div>
-              <div className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] border-4 border-yellow-100 rounded-full opacity-20"></div>
-
-              {/* Green Shape - Top Right - Responsive */}
-              <div
-                className="absolute w-40 h-32 sm:w-56 sm:h-44 md:w-64 md:h-48 lg:w-72 lg:h-56 bg-[#16a34a] rounded-2xl sm:rounded-3xl lg:rounded-[40px] opacity-90 hidden sm:block"
+              <div 
+                className="absolute rounded-full border-4 border-yellow-200 opacity-30"
                 style={{
-                  right: "10px",
-                  top: "20px",
+                  width: "clamp(180px, 70vw, 380px)",
+                  height: "clamp(180px, 70vw, 380px)",
+                }}
+              ></div>
+              <div 
+                className="absolute rounded-full border-4 border-yellow-100 opacity-20"
+                style={{
+                  width: "clamp(240px, 85vw, 450px)",
+                  height: "clamp(240px, 85vw, 450px)",
+                }}
+              ></div>
+
+              {/* Green Shape - Top Right - Hidden on small mobile */}
+              <div
+                className="absolute rounded-3xl opacity-90 hidden sm:block"
+                style={{
+                  width: "clamp(140px, 45vw, 280px)",
+                  height: "clamp(100px, 35vw, 220px)",
+                  backgroundColor: "#16a34a",
+                  right: "clamp(-20px, 5vw, 40px)",
+                  top: "clamp(10px, 8vh, 60px)",
                   transform: "skewY(-5deg) rotate(15deg)",
                   animation: "float 5s ease-in-out infinite",
                 }}
               ></div>
 
-              {/* Orange Shape - Bottom Right - Responsive */}
+              {/* Orange Shape - Bottom Right - Hidden on small mobile */}
               <div
-                className="absolute w-36 h-28 sm:w-52 sm:h-40 md:w-60 md:h-48 lg:w-64 lg:h-52 bg-[#FF6B35] rounded-2xl sm:rounded-3xl lg:rounded-[40px] opacity-90 hidden sm:block"
+                className="absolute rounded-3xl opacity-90 hidden sm:block"
                 style={{
-                  right: "-10px",
-                  bottom: "20px",
+                  width: "clamp(130px, 42vw, 260px)",
+                  height: "clamp(100px, 35vw, 200px)",
+                  backgroundColor: "#FF6B35",
+                  right: "clamp(-30px, 2vw, 30px)",
+                  bottom: "clamp(10px, 8vh, 50px)",
                   transform: "skewY(-5deg) rotate(8deg)",
                   animation: "float 6s ease-in-out infinite 0.3s",
                 }}
               ></div>
 
-              {/* Yellow Shape - Left - Responsive */}
+              {/* Yellow Shape - Left - Hidden on small mobile */}
               <div
-                className="absolute w-32 h-40 sm:w-48 sm:h-56 md:w-52 md:h-60 lg:w-56 lg:h-64 bg-[#FBBF24] rounded-2xl sm:rounded-3xl lg:rounded-[30px] opacity-95 hidden sm:block"
+                className="absolute rounded-3xl opacity-95 hidden sm:block"
                 style={{
-                  left: "-15px",
-                  top: "40px",
+                  width: "clamp(120px, 40vw, 220px)",
+                  height: "clamp(140px, 45vw, 260px)",
+                  backgroundColor: "#FBBF24",
+                  left: "clamp(-30px, 2vw, 20px)",
+                  top: "clamp(20px, 10vh, 80px)",
                   transform: "rotate(-12deg)",
                   animation: "float 5.5s ease-in-out infinite 0.1s",
                 }}
@@ -265,63 +312,84 @@ const Hero = () => {
               <div 
                 className="absolute flex items-center justify-center"
                 style={{
-                  width: "clamp(280px, 80vw, 600px)",
-                  height: "clamp(280px, 80vw, 600px)",
+                  width: "clamp(220px, 65vw, 500px)",
+                  height: "clamp(220px, 65vw, 500px)",
                   animation: "orbit 25s linear infinite",
                 }}
               >
                 {/* Orbital track circle - subtle */}
-                <div className="absolute rounded-full border-2 border-dashed border-gray-300 opacity-20"
+                <div 
+                  className="absolute rounded-full border-2 border-dashed border-gray-300 opacity-20"
                   style={{
-                    width: "clamp(200px, 60vw, 400px)",
-                    height: "clamp(200px, 60vw, 400px)",
+                    width: "clamp(160px, 50vw, 350px)",
+                    height: "clamp(160px, 50vw, 350px)",
                   }}
                 ></div>
 
                 {/* Icon 1 - Top - Checkmark */}
                 <div
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl font-bold border-3 sm:border-4 border-yellow-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  className="absolute bg-white rounded-full shadow-lg flex items-center justify-center font-bold border-3 border-yellow-400 hover:scale-110 transition-transform cursor-pointer active:scale-95"
                   style={{
+                    width: "clamp(40px, 10vw, 80px)",
+                    height: "clamp(40px, 10vw, 80px)",
+                    fontSize: "clamp(20px, 6vw, 40px)",
                     top: "0%",
                     left: "50%",
                     transform: "translateX(-50%)",
                   }}
+                  role="button"
+                  tabIndex={0}
                 >
                   ✓
                 </div>
 
                 {/* Icon 2 - Right - Google */}
                 <div
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center border-3 sm:border-4 border-blue-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer overflow-hidden p-1.5 sm:p-2"
+                  className="absolute bg-white rounded-full shadow-lg flex items-center justify-center border-3 border-blue-400 hover:scale-110 transition-transform cursor-pointer active:scale-95 overflow-hidden"
                   style={{
+                    width: "clamp(40px, 10vw, 80px)",
+                    height: "clamp(40px, 10vw, 80px)",
+                    padding: "clamp(6px, 1.5vw, 12px)",
                     right: "0%",
                     top: "50%",
                     transform: "translateY(-50%)",
                   }}
+                  role="button"
+                  tabIndex={0}
                 >
-                  <img src={google} alt="google" className="w-full h-full object-contain" />
+                  <img src={google} alt="google logo" className="w-full h-full object-contain" />
                 </div>
 
                 {/* Icon 3 - Bottom - Trophy */}
                 <div
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl border-3 sm:border-4 border-orange-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  className="absolute bg-white rounded-full shadow-lg flex items-center justify-center border-3 border-orange-400 hover:scale-110 transition-transform cursor-pointer active:scale-95"
                   style={{
+                    width: "clamp(40px, 10vw, 80px)",
+                    height: "clamp(40px, 10vw, 80px)",
+                    fontSize: "clamp(20px, 6vw, 40px)",
                     bottom: "0%",
                     left: "50%",
                     transform: "translateX(-50%)",
                   }}
+                  role="button"
+                  tabIndex={0}
                 >
                   🏆
                 </div>
 
                 {/* Icon 4 - Left - Books */}
                 <div
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-full shadow-lg sm:shadow-xl lg:shadow-2xl flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl border-3 sm:border-4 border-purple-400 hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer"
+                  className="absolute bg-white rounded-full shadow-lg flex items-center justify-center border-3 border-purple-400 hover:scale-110 transition-transform cursor-pointer active:scale-95"
                   style={{
+                    width: "clamp(40px, 10vw, 80px)",
+                    height: "clamp(40px, 10vw, 80px)",
+                    fontSize: "clamp(20px, 6vw, 40px)",
                     left: "0%",
                     top: "50%",
                     transform: "translateY(-50%)",
                   }}
+                  role="button"
+                  tabIndex={0}
                 >
                   📚
                 </div>
@@ -330,16 +398,18 @@ const Hero = () => {
               {/* Student Image - Center (z-20) - Responsive */}
               <img
                 src={student}
-                alt="student"
-                className="relative z-20 w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[500px] drop-shadow-lg sm:drop-shadow-xl object-contain"
+                alt="student illustration"
+                className="relative z-20 object-contain drop-shadow-xl"
+                style={{
+                  width: "clamp(160px, 55vw, 420px)",
+                  height: "auto",
+                  maxWidth: "90vw",
+                }}
               />
             </div>
           </div>
         </div>
       </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 w-full h-20 sm:h-24 md:h-32 bg-gradient-to-t from-[#f5f1eb] to-transparent pointer-events-none" />
 
       {/* Animation Styles */}
       <style>{`
@@ -361,16 +431,45 @@ const Hero = () => {
           }
         }
 
-        /* Responsive text sizing */
+        /* Responsive adjustments */
         @media (max-width: 640px) {
           h1 {
-            line-height: 1.2;
+            letter-spacing: -0.02em;
           }
         }
 
         @media (max-width: 480px) {
           h1 {
-            line-height: 1.15;
+            letter-spacing: -0.03em;
+          }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          button {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+          }
+
+          div[role="button"] {
+            padding: 0.5rem;
+          }
+        }
+
+        /* Reduce animations on low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+
+        /* Print styles */
+        @media print {
+          .animate-pulse,
+          [style*="animation"] {
+            animation: none;
           }
         }
       `}</style>
