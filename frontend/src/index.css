@@ -1,31 +1,30 @@
 @import "tailwindcss";
+
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
 
-
-:root {
-  --header-height: 0px;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-html {
-  scroll-padding-top: var(--header-height);
-}
-
-body {
-  padding-top: var(--header-height);
-}
-
-html, body {
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

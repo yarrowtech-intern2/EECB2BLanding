@@ -175,7 +175,7 @@ const Hero = () => {
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         background: "#f5f1eb",
-        paddingTop: "80px",
+        paddingTop: "64px",
         paddingBottom: "40px",
         boxSizing: "border-box",
       }}
@@ -240,7 +240,7 @@ const Hero = () => {
               <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
                 <button
                   onClick={scrollToContact}
-                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2 border-black w-full sm:w-auto text-center"
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2  w-full sm:w-auto text-center"
                   aria-label="Start Free Trial"
                 >
                   Start Free Trial
@@ -249,7 +249,7 @@ const Hero = () => {
             </div>
 
             {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[380px] md:min-h-[480px] lg:min-h-[600px] mt-6 sm:mt-8 lg:mt-0">
+            <div className="relative w-full flex items-start justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[380px] md:min-h-[480px] lg:min-h-[600px] mt-10 sm:mt-14 lg:mt-16 pt-4 sm:pt-6 lg:pt-10">
               {/* Decorative circles - Responsive */}
               <div 
                 className="absolute rounded-full border-4 border-yellow-200 opacity-30"
@@ -308,21 +308,21 @@ const Hero = () => {
                 }}
               ></div>
 
-              {/* ORBITAL CONTAINER - Icons rotating around student - Responsive */}
+              {/* ORBITAL CONTAINER - Icons rotating OUTSIDE student image */}
               <div 
                 className="absolute flex items-center justify-center"
                 style={{
-                  width: "clamp(220px, 65vw, 500px)",
-                  height: "clamp(220px, 65vw, 500px)",
+                  width: "clamp(300px, 78vw, 580px)",
+                  height: "clamp(300px, 78vw, 580px)",
                   animation: "orbit 25s linear infinite",
                 }}
               >
-                {/* Orbital track circle - subtle */}
+                {/* Orbital track circle - dashed ring */}
                 <div 
-                  className="absolute rounded-full border-2 border-dashed border-gray-300 opacity-20"
+                  className="absolute rounded-full border-2 border-dashed border-yellow-300 opacity-30"
                   style={{
-                    width: "clamp(160px, 50vw, 350px)",
-                    height: "clamp(160px, 50vw, 350px)",
+                    width: "clamp(280px, 74vw, 560px)",
+                    height: "clamp(280px, 74vw, 560px)",
                   }}
                 ></div>
 
@@ -401,9 +401,9 @@ const Hero = () => {
                 alt="student illustration"
                 className="relative z-20 object-contain drop-shadow-xl"
                 style={{
-                  width: "clamp(160px, 55vw, 420px)",
+                  width: "clamp(200px, 65vw, 520px)",
                   height: "auto",
-                  maxWidth: "90vw",
+                  maxWidth: "95vw",
                 }}
               />
             </div>

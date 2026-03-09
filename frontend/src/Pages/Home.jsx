@@ -12,30 +12,44 @@ import Gallary from "../Components/Gallery";
 const Home = () => {
   return (
     <main className="w-full overflow-x-hidden">
-      <section id="home" className="scroll-mt-28">
-        <Hero />
-      </section>
-      <section id="why-eec" className="scroll-mt-28">
+      {/* Hero already renders <section id="home"> internally */}
+      <Hero />
+
+      {/* Why EEC */}
+      <section id="why-eec" className="scroll-mt-[64px]">
         <WhyEEC />
-           </section>
-        <section id="platform" className="scroll-mt-28">
+      </section>
+
+      {/* Platform Overview */}
+      <section id="platform" className="scroll-mt-[64px]">
         <PlatformOverview />
       </section>
-      <section id="modules" className="scroll-mt-28">
+
+      {/* Modules */}
+      <section id="modules" className="scroll-mt-[64px]">
         <Modules />
       </section>
-      <section id="gallery" className="scroll-mt-28">
+
+      {/* Gallery */}
+      <section id="gallery" className="scroll-mt-[64px]">
         <Gallary />
       </section>
-      <section id="features" className="scroll-mt-28">
+
+      {/* Features */}
+      <section id="features" className="scroll-mt-[64px]">
         <Features />
       </section>
-      <section id="about-us" className="scroll-mt-28">
+
+      {/* About Us */}
+      <section id="about" className="scroll-mt-[64px]">
         <AboutUs />
       </section>
-      <section id="enquiry" className="scroll-mt-28">
+
+      {/* Contact */}
+      <section id="contact" className="scroll-mt-[64px]">
         <Contact />
       </section>
+
       <Floating />
       <Footer />
     </main>

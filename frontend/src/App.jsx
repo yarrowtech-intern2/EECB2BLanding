@@ -15,26 +15,19 @@ function App() {
       easing: "ease-out-cubic",
       once: false,
       mirror: true,
-      offset: 120, 
+      offset: 120,
     });
 
-    const onScroll = () => {
-      AOS.refresh();
-    };
-
+    const onScroll = () => AOS.refresh();
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
       <Toaster position="bottom-right" toastOptions={{ duration: 4000 }} />
       <Header />
-
-      <main className="pt-[120px]">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/features" element={<Features />} />

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import aboutBg from "../assets/About Us.jpg"; // avoid spaces in filename
+import aboutBg from "../assets/About Us.jpg"; 
 
 const AboutUs = () => {
   useEffect(() => {
