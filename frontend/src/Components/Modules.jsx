@@ -84,7 +84,10 @@ export default function EECModules() {
       once: true,
       offset: 120,
     });
-  }, []);
+
+    // Refresh AOS when module changes
+    AOS.refresh();
+  }, [activeModule]);
 
   return (
     <section id="modules" className="relative overflow-hidden bg-white">
@@ -158,74 +161,76 @@ export default function EECModules() {
           </div>
 
           {/* CARDS GRID */}
-          <div
-            className={`grid grid-cols-1 ${
-              activeModule === "ERP"
-                ? "md:grid-cols-2 lg:grid-cols-3"
-                : "md:grid-cols-2 lg:grid-cols-3"
-            } gap-8`}
-          >
-            {MODULES[activeModule].map((mod, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 120}
-                className="
-                  relative bg-white rounded-[26px]
-                  border border-[#f5d8b8]
-                  shadow-[0_18px_40px_rgba(15,23,42,0.10)]
-                  overflow-hidden
-                  min-h-[250px]
-                  transition-all duration-300
-                  hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]
-                "
-              >
-                {/* LEFT DIAGONAL STRIP */}
-                <div className="absolute inset-y-0 left-0 w-[90px]">
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#ffd6a8] to-[#f5f3ff]" />
-                  <div
-                    className="absolute -right-12 top-0 h-full w-24 bg-white"
-                    style={{
-                      clipPath: "polygon(0 0, 100% 0, 0 100%)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {MODULES[activeModule].map((mod, index) => {
+              // Alternate animations: even index = fade-right (from left), odd index = fade-left (from right)
+              const animationDirection = index % 2 === 0 ? "fade-right" : "fade-left";
 
-                {/* CONTENT */}
-                <div className="relative z-10 p-7 pl-9">
-                  {/* Icon */}
-                  <div className="mb-5">
+              return (
+                <div
+                  key={index}
+                  data-aos={animationDirection}
+                  data-aos-offset="200"
+                  data-aos-duration="1000"
+                  data-aos-delay={index * 100}
+                  className="
+                    group relative bg-white rounded-[26px]
+                    border border-yellow-200
+                    shadow-[0_18px_40px_rgba(15,23,42,0.10)]
+                    overflow-hidden
+                    transition-all duration-500
+                    hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]
+                  "
+                >
+                  {/* LEFT DIAGONAL STRIP */}
+                  <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
                     <div
-                      className="
-                        w-12 h-12 rounded-2xl
-                        bg-orange-500
-                        shadow-md
-                        flex items-center justify-center
-                        ring-4 ring-orange-100
-                      "
-                    >
-                      <span className="text-white text-xl">{mod.icon}</span>
-                    </div>
+                      className="absolute -right-10 top-0 h-full w-20 bg-white"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 0 100%)",
+                        opacity: 0.7,
+                      }}
+                    />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-3">
-                    {mod.title}
-                  </h3>
+                  {/* CONTENT */}
+                  <div className="relative z-10 p-7 pl-9">
+                    {/* Icon */}
+                    <div className="mb-5">
+                      <div
+                        className="
+                          w-14 h-14 rounded-2xl
+                          bg-yellow-400
+                          shadow-md
+                          flex items-center justify-center
+                          ring-4 ring-yellow-100
+                          group-hover:scale-110
+                          transition-transform duration-300
+                        "
+                      >
+                        <span className="text-white text-2xl">{mod.icon}</span>
+                      </div>
+                    </div>
 
-                  {/* Points */}
-                  <ul className="space-y-2 text-sm text-slate-600 font-medium">
-                    {mod.points.map((p, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0" />
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Title */}
+                    <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-3 group-hover:text-yellow-500 transition-colors">
+                      {mod.title}
+                    </h3>
+
+                    {/* Points */}
+                    <ul className="space-y-2 text-sm text-slate-600 font-medium">
+                      {mod.points.map((p, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

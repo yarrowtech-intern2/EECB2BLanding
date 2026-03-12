@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import student from "../assets/student.png";
+import student from "../assets/student.jpg";
 import google from "../assets/google.png";
+import { FiPlus, FiMinus, FiX, FiDivide, FiBookOpen, FiZap, FiSettings, FiCpu, FiCheck } from "react-icons/fi";
+import { TbMathIntegral, TbMathFunction, TbMathSymbols, TbSquareRoot, TbVariable } from "react-icons/tb";
 
 const Hero = () => {
-  const mountRef = useRef(null);
   const [rotatingIndex, setRotatingIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -12,11 +12,11 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const rotatingTexts = [
-    "Learning Management System",
-    "Smart Learning with ML Insights",
-    "AI-Driven LMS & ERP Solution",
-    "Automated Exam Software",
     "Futuristic EdTech Platform",
+    "Automated Exam Software",
+    "Electronic Educare Solution",
+    "Smart School Management",
+    "Modern Learning Platform",
   ];
 
   // Detect mobile devices
@@ -65,105 +65,6 @@ const Hero = () => {
     return () => clearTimeout(typingTimer);
   }, [charIndex, isDeleting, rotatingIndex, rotatingTexts]);
 
-  useEffect(() => {
-    if (!mountRef.current) return;
-
-    // Scene setup
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf3efe6);
-
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 5;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
-    );
-    renderer.setPixelRatio(window.devicePixelRatio);
-    mountRef.current.appendChild(renderer.domElement);
-
-    // Create floating 3D shapes
-    const shapes = [];
-
-    // Create icosahedron (geometric shape)
-    const geometry1 = new THREE.IcosahedronGeometry(0.8, 4);
-    const material1 = new THREE.MeshPhongMaterial({ color: 0x16a34a }); // Green
-    const shape1 = new THREE.Mesh(geometry1, material1);
-    shape1.position.set(-3, 2, 0);
-    scene.add(shape1);
-    shapes.push({ mesh: shape1, rotSpeed: 0.005 });
-
-    // Create octahedron (orange shape)
-    const geometry2 = new THREE.OctahedronGeometry(1, 2);
-    const material2 = new THREE.MeshPhongMaterial({ color: 0xff6b35 }); // Orange
-    const shape2 = new THREE.Mesh(geometry2, material2);
-    shape2.position.set(3, -1.5, 0);
-    scene.add(shape2);
-    shapes.push({ mesh: shape2, rotSpeed: 0.007 });
-
-    // Create tetrahedron (yellow shape)
-    const geometry3 = new THREE.TetrahedronGeometry(1, 2);
-    const material3 = new THREE.MeshPhongMaterial({ color: 0xfbbf24 }); // Yellow
-    const shape3 = new THREE.Mesh(geometry3, material3);
-    shape3.position.set(0, 3, -1);
-    scene.add(shape3);
-    shapes.push({ mesh: shape3, rotSpeed: 0.006 });
-
-    // Lighting
-    const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
-    light1.position.set(5, 5, 5);
-    scene.add(light1);
-
-    const light2 = new THREE.DirectionalLight(0xff6b35, 0.4);
-    light2.position.set(-5, -5, 3);
-    scene.add(light2);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-    scene.add(ambientLight);
-
-    // Animation loop
-    let animationId;
-    const animate = () => {
-      animationId = requestAnimationFrame(animate);
-
-      shapes.forEach((item, index) => {
-        item.mesh.rotation.x += item.rotSpeed;
-        item.mesh.rotation.y += item.rotSpeed * 1.3;
-        item.mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.005;
-      });
-
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    // Handle resize
-    const handleResize = () => {
-      if (!mountRef.current) return;
-      const width = mountRef.current.clientWidth;
-      const height = mountRef.current.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationId);
-      renderer.dispose();
-      if (mountRef.current && mountRef.current.contains(renderer.domElement)) {
-        mountRef.current.removeChild(renderer.domElement);
-      }
-    };
-  }, []);
-
   const scrollToContact = () => {
     const section = document.getElementById("contact");
     if (section) section.scrollIntoView({ behavior: "smooth" });
@@ -172,32 +73,79 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white"
       style={{
-        background: "#f5f1eb",
         paddingTop: "64px",
         paddingBottom: "40px",
         boxSizing: "border-box",
       }}
     >
-      {/* 3D Background Canvas - Hidden on very small screens for performance */}
-      {!isMobile && (
-        <div
-          ref={mountRef}
-          className="absolute inset-0 w-full h-full"
-          style={{ opacity: 0.3, pointerEvents: "none" }}
-        />
-      )}
+      {/* Background glowing elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -left-48 top-20 h-[600px] w-[600px] rounded-full bg-yellow-200/30 blur-[120px]" />
+        <div className="absolute -right-48 bottom-20 h-[600px] w-[600px] rounded-full bg-orange-200/30 blur-[120px]" />
+        
+        {/* Floating Rhombuses */}
+        <div className="absolute top-[10%] left-[15%] w-10 h-10 md:w-16 md:h-16 border-2 border-yellow-400/40 rotate-45 animate-float-slow select-none pointer-events-none" />
+        <div className="absolute bottom-[20%] right-[10%] w-16 h-16 md:w-24 md:h-24 border-2 border-orange-400/40 rotate-45 animate-float-delayed select-none pointer-events-none" />
+        <div className="absolute top-[40%] right-[25%] w-8 h-8 md:w-12 md:h-12 bg-yellow-300/20 rotate-45 animate-float select-none pointer-events-none" />
+        <div className="absolute top-[5%] right-[40%] w-12 h-12 md:w-20 md:h-20 border border-blue-400/30 rotate-45 animate-float-slow select-none pointer-events-none" />
+        <div className="absolute bottom-[35%] left-[10%] w-9 h-9 md:w-14 md:h-14 border border-purple-400/30 rotate-45 animate-float select-none pointer-events-none" />
+        <div className="absolute top-[60%] left-[30%] w-7 h-7 md:w-10 md:h-10 border border-emerald-400/30 rotate-45 animate-float-delayed select-none pointer-events-none" />
 
-      {/* Fallback gradient background for mobile */}
-      {isMobile && (
-        <div
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{
-            background: "linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%)",
-          }}
-        />
-      )}
+        {/* Equations & Math Symbols */}
+        <div className="absolute top-[15%] left-[10%] text-yellow-600/40 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-slow select-none pointer-events-none">
+          E = mc²
+        </div>
+        <div className="absolute bottom-[15%] left-[20%] text-orange-600/40 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
+          a² + b² = c²
+        </div>
+        <div className="absolute top-[25%] right-[15%] text-blue-600/40 text-2xl md:text-3xl lg:text-4xl animate-float-delayed select-none pointer-events-none">
+          ∫ f(x) dx
+        </div>
+        <div className="absolute bottom-[30%] left-[5%] text-purple-600/40 text-3xl md:text-4xl lg:text-5xl animate-float select-none pointer-events-none">
+          ∇ × B = μ₀J
+        </div>
+        <div className="absolute top-[50%] right-[5%] text-emerald-600/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
+          ∂u/∂t = α∇²u
+        </div>
+
+        {/* Trigonometry Symbols */}
+        <div className="absolute top-[22%] left-[45%] text-indigo-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
+          sin(θ)
+        </div>
+        <div className="absolute bottom-[10%] right-[35%] text-pink-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
+          cos(x)
+        </div>
+        <div className="absolute top-[70%] left-[15%] text-yellow-700/35 text-lg md:text-xl lg:text-2xl font-serif italic animate-float-delayed select-none pointer-events-none">
+          tan(α)
+        </div>
+
+        {/* More Calculus & Math */}
+        <div className="absolute top-[45%] left-[5%] text-blue-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
+          d/dx
+        </div>
+        <div className="absolute bottom-[25%] right-[20%] text-orange-500/35 text-3xl md:text-4xl lg:text-5xl font-serif italic animate-float-slow select-none pointer-events-none">
+          ∑ n=1
+        </div>
+        <div className="absolute top-[10%] left-[30%] text-purple-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
+          lim x→∞
+        </div>
+
+        {/* Floating Math Symbols */}
+        <div className="absolute top-1/4 left-1/2 text-yellow-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
+          <FiPlus />
+        </div>
+        <div className="absolute bottom-1/3 left-1/4 text-purple-500/40 text-5xl md:text-6xl lg:text-7xl animate-float select-none pointer-events-none">
+          <TbMathIntegral />
+        </div>
+        <div className="absolute top-1/3 right-[20%] text-orange-500/40 text-3xl md:text-4xl lg:text-5xl animate-float-delayed select-none pointer-events-none">
+          <FiMinus />
+        </div>
+        <div className="absolute bottom-1/4 right-[30%] text-emerald-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
+          <span className="font-serif italic font-bold">∇</span>
+        </div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-8">
@@ -240,7 +188,7 @@ const Hero = () => {
               <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
                 <button
                   onClick={scrollToContact}
-                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2  w-full sm:w-auto text-center"
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2 w-full sm:w-auto text-center"
                   aria-label="Start Free Trial"
                 >
                   Start Free Trial
@@ -249,7 +197,7 @@ const Hero = () => {
             </div>
 
             {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-start justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[380px] md:min-h-[480px] lg:min-h-[600px] mt-10 sm:mt-14 lg:mt-16 pt-4 sm:pt-6 lg:pt-10">
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[640px] mt-16 sm:mt-24 lg:mt-28">
               {/* Decorative circles - Responsive */}
               <div 
                 className="absolute rounded-full border-4 border-yellow-200 opacity-30"
@@ -263,48 +211,6 @@ const Hero = () => {
                 style={{
                   width: "clamp(240px, 85vw, 450px)",
                   height: "clamp(240px, 85vw, 450px)",
-                }}
-              ></div>
-
-              {/* Green Shape - Top Right - Hidden on small mobile */}
-              <div
-                className="absolute rounded-3xl opacity-90 hidden sm:block"
-                style={{
-                  width: "clamp(140px, 45vw, 280px)",
-                  height: "clamp(100px, 35vw, 220px)",
-                  backgroundColor: "#16a34a",
-                  right: "clamp(-20px, 5vw, 40px)",
-                  top: "clamp(10px, 8vh, 60px)",
-                  transform: "skewY(-5deg) rotate(15deg)",
-                  animation: "float 5s ease-in-out infinite",
-                }}
-              ></div>
-
-              {/* Orange Shape - Bottom Right - Hidden on small mobile */}
-              <div
-                className="absolute rounded-3xl opacity-90 hidden sm:block"
-                style={{
-                  width: "clamp(130px, 42vw, 260px)",
-                  height: "clamp(100px, 35vw, 200px)",
-                  backgroundColor: "#FF6B35",
-                  right: "clamp(-30px, 2vw, 30px)",
-                  bottom: "clamp(10px, 8vh, 50px)",
-                  transform: "skewY(-5deg) rotate(8deg)",
-                  animation: "float 6s ease-in-out infinite 0.3s",
-                }}
-              ></div>
-
-              {/* Yellow Shape - Left - Hidden on small mobile */}
-              <div
-                className="absolute rounded-3xl opacity-95 hidden sm:block"
-                style={{
-                  width: "clamp(120px, 40vw, 220px)",
-                  height: "clamp(140px, 45vw, 260px)",
-                  backgroundColor: "#FBBF24",
-                  left: "clamp(-30px, 2vw, 20px)",
-                  top: "clamp(20px, 10vh, 80px)",
-                  transform: "rotate(-12deg)",
-                  animation: "float 5.5s ease-in-out infinite 0.1s",
                 }}
               ></div>
 
@@ -396,16 +302,24 @@ const Hero = () => {
               </div>
 
               {/* Student Image - Center (z-20) - Responsive */}
-              <img
-                src={student}
-                alt="student illustration"
-                className="relative z-20 object-contain drop-shadow-xl"
-                style={{
-                  width: "clamp(200px, 65vw, 520px)",
-                  height: "auto",
-                  maxWidth: "95vw",
-                }}
-              />
+              <div className="relative z-20 group mt-4 sm:mt-0 flex items-center justify-center">
+                {/* Glowing shadow behind image */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-tr from-yellow-400 to-orange-400 rounded-full blur-2xl opacity-40"
+                  style={{ transform: "translateY(5px)", zIndex: -1 }}
+                ></div>
+                
+                {/* Image itself - perfectly round and fixed */}
+                <img
+                  src={student}
+                  alt="student reading or learning"
+                  className="relative object-cover rounded-full border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white aspect-square"
+                  style={{
+                    width: "clamp(220px, 50vw, 420px)",
+                    height: "clamp(220px, 50vw, 420px)",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -415,11 +329,23 @@ const Hero = () => {
       <style>{`
         @keyframes float {
           0%, 100% {
-            transform: translateY(0px);
+            transform: translateY(0px) rotate(0deg);
           }
           50% {
-            transform: translateY(-20px);
+            transform: translateY(-25px) rotate(5deg);
           }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+          animation: float 10s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: float 8s ease-in-out infinite 1.5s;
         }
 
         @keyframes orbit {
@@ -477,4 +403,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero; 

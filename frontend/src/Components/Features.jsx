@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import featuresBg from "/Features.jpg";
+import featuresBanner from "../assets/Features.jpg";
 
 import {
   FaBrain,
@@ -64,14 +64,15 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" className="relative overflow-hidden bg-white">
+    <section id="features" className="relative overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white m-0 p-0" style={{ margin: 0, padding: 0 }}>
       {/* ===================== */}
-      {/* TOP IMAGE BANNER PART */}
+      {/* HERO IMAGE SECTION */}
       {/* ===================== */}
+
       <div className="relative h-[420px] sm:h-[520px] lg:h-[640px] w-full overflow-hidden">
         {/* background image */}
         <img
-          src={featuresBg}
+          src={featuresBanner}
           alt="Features Background"
           className="absolute inset-0 w-full h-full object-cover"
           draggable="false"
@@ -94,11 +95,12 @@ const Features = () => {
       {/* ===================== */}
       {/* WHITE SECTION + CARDS */}
       {/* ===================== */}
-      <div className="relative py-20 sm:py-24">
+      <div className="relative w-full py-14 sm:py-20 md:py-24 lg:py-28 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
         {/* soft background glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-yellow-100 blur-[140px]" />
-          <div className="absolute -right-40 bottom-10 h-[520px] w-[520px] rounded-full bg-orange-100 blur-[140px]" />
+          <div className="absolute -left-48 top-20 h-[600px] w-[600px] rounded-full bg-yellow-200/30 blur-[160px]" />
+          <div className="absolute -right-48 bottom-20 h-[600px] w-[600px] rounded-full bg-orange-200/30 blur-[160px]" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-amber-100/20 blur-[120px]" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 z-10">
@@ -111,20 +113,23 @@ const Features = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {features.map((item, index) => {
               const Icon = item.icon;
+              // Alternate animations: even index = fade-right (from left), odd index = fade-left (from right)
+              const animationDirection = index % 2 === 0 ? "fade-right" : "fade-left";
 
               return (
                 <div
                   key={index}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 120}
+                  data-aos={animationDirection}
+                  data-aos-offset="200"
+                  data-aos-duration="1000"
+                  data-aos-delay={index * 80}
                   className="
                     group relative bg-white
                     border border-yellow-200
                     rounded-[26px] p-8
-                    min-h-[380px]
                     shadow-[0_18px_40px_rgba(15,23,42,0.10)]
                     hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]
                     hover:-translate-y-2

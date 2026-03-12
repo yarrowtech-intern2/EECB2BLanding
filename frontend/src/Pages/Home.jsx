@@ -7,7 +7,6 @@ import Features from "../Components/Features";
 import AboutUs from "../Components/AboutUs";
 import Footer from "../Components/Footer";
 import Floating from "../Components/Floating";
-import Gallary from "../Components/Gallery";
 
 const Home = () => {
   return (
@@ -28,11 +27,6 @@ const Home = () => {
       {/* Modules */}
       <section id="modules" className="scroll-mt-[64px]">
         <Modules />
-      </section>
-
-      {/* Gallery */}
-      <section id="gallery" className="scroll-mt-[64px]">
-        <Gallary />
       </section>
 
       {/* Features */}
