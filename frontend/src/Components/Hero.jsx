@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import student from "../assets/student.jpg";
 import google from "../assets/google.png";
-import { FiPlus, FiMinus, FiX, FiDivide, FiBookOpen, FiZap, FiSettings, FiCpu, FiCheck } from "react-icons/fi";
-import { TbMathIntegral, TbMathFunction, TbMathSymbols, TbSquareRoot, TbVariable } from "react-icons/tb";
+import { FiPlus, FiMinus, FiX, FiDivide, FiBookOpen, FiZap, FiSettings, FiCpu, FiCheck, FiFilter } from "react-icons/fi";
+import { TbMathIntegral, TbMathFunction, TbMathSymbols, TbSquareRoot, TbVariable, TbFlask, TbFlask2 } from "react-icons/tb";
+
 
 const Hero = () => {
   const [rotatingIndex, setRotatingIndex] = useState(0);
@@ -110,7 +111,41 @@ const Hero = () => {
           ∂u/∂t = α∇²u
         </div>
 
-        {/* Trigonometry Symbols */}
+        {/* Chemistry Equations & Organic Formulas */}
+        <div className="absolute top-[8%] left-[25%] text-rose-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-delayed select-none pointer-events-none">
+          C₆H₁₂O₆
+        </div>
+        <div className="absolute bottom-[22%] right-[15%] text-cyan-600/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-slow select-none pointer-events-none">
+          CH₃CH₂OH
+        </div>
+        <div className="absolute top-[65%] left-[8%] text-amber-600/35 text-3xl md:text-4xl lg:text-5xl font-serif animate-float select-none pointer-events-none">
+          H₂SO₄
+        </div>
+        
+        {/* Benzene Ring SVG */}
+        <div className="absolute top-1/2 left-[15%] opacity-20 text-emerald-600 animate-float-slow select-none pointer-events-none">
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M50 5 L89 27.5 L89 72.5 L50 95 L11 72.5 L11 27.5 Z" />
+            <circle cx="50" cy="50" r="25" />
+          </svg>
+        </div>
+
+        <div className="absolute top-[35%] right-[35%] text-teal-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
+          C₆H₆
+        </div>
+        <div className="absolute bottom-[5%] left-[40%] text-indigo-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
+          PV = nRT
+        </div>
+        <div className="absolute top-[42%] left-[22%] text-lime-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
+          NH₃ + HCl → NH₄Cl
+        </div>
+        
+        {/* DNA/Molecular Icon */}
+        <div className="absolute bottom-1/4 left-[35%] opacity-20 text-blue-500 animate-float-delayed select-none pointer-events-none">
+          <FiCpu />
+        </div>
+
+        {/* Trigonometry & More Math */}
         <div className="absolute top-[22%] left-[45%] text-indigo-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
           sin(θ)
         </div>
@@ -121,7 +156,7 @@ const Hero = () => {
           tan(α)
         </div>
 
-        {/* More Calculus & Math */}
+        {/* Advanced Math & Physics */}
         <div className="absolute top-[45%] left-[5%] text-blue-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
           d/dx
         </div>
@@ -130,6 +165,27 @@ const Hero = () => {
         </div>
         <div className="absolute top-[10%] left-[30%] text-purple-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
           lim x→∞
+        </div>
+        <div className="absolute top-[75%] right-[10%] text-red-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
+          eⁱπ + 1 = 0
+        </div>
+        <div className="absolute bottom-[40%] right-[40%] text-blue-700/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
+          λ = h/p
+        </div>
+
+        {/* Chemistry Lab Elements - Acid & Funnel */}
+        <div className="absolute top-[30%] left-[40%] text-red-500/40 text-4xl md:text-5xl lg:text-6xl animate-float select-none pointer-events-none" title="Acid / Beaker">
+          <TbFlask />
+          <span className="absolute -top-4 -right-8 text-xs font-bold text-red-600/60 font-sans">ACID</span>
+        </div>
+        
+        <div className="absolute bottom-[40%] left-[12%] text-blue-400/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none" title="Chong Funnel">
+          <FiFilter className="rotate-180" />
+          <span className="absolute -bottom-4 -right-12 text-xs font-bold text-blue-600/60 font-sans whitespace-nowrap">FUNNEL</span>
+        </div>
+
+        <div className="absolute top-[55%] right-[20%] text-emerald-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-delayed select-none pointer-events-none">
+          <TbFlask2 />
         </div>
 
         {/* Floating Math Symbols */}
