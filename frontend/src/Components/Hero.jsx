@@ -241,10 +241,10 @@ const Hero = () => {
               </p>
 
               {/* Button */}
-              <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
+              <div className="flex gap-3 sm:gap-4 items-center flex-wrap lg:flex-nowrap">
                 <button
                   onClick={scrollToContact}
-                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base w-full sm:w-auto text-center"
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base w-full sm:w-auto lg:w-auto text-center"
                   aria-label="Start Free Trial"
                 >
                   Start Free Trial
