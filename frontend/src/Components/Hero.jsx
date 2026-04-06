@@ -219,24 +219,24 @@ const Hero = () => {
 
               {/* Heading */}
               <div className="mb-6 sm:mb-8 mt-4 sm:mt-0">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight sm:leading-tight md:leading-tight lg:leading-none mb-1 sm:mb-2 text-black break-words">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-7xl font-black leading-tight sm:leading-tight md:leading-tight lg:leading-none mb-1 sm:mb-2 text-black break-words">
                   EEC
                 </h1>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-amber-600 leading-tight break-words">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-5xl font-bold text-amber-600 leading-tight break-words">
                   Electronic Educare
                 </h2>
               </div>
 
               {/* Typing Effect Text */}
               <div className="mb-6 sm:mb-8 mt-4 sm:mt-6 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] lg:min-h-[3.5rem] overflow-hidden">
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-amber-600 tracking-wide break-words">
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl 2xl:text-xl font-bold text-amber-600 tracking-wide break-words">
                   {displayedText}
                   <span className="animate-pulse ml-1">|</span>
                 </h3>
               </div>
 
               {/* Description */}
-              <p className="text-sm sm:text-base md:text-base lg:text-lg text-black mb-6 sm:mb-8 lg:mb-4 xl:mb-3 2xl:mb-2 max-w-full leading-relaxed font-medium">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg 2xl:text-base text-black mb-6 sm:mb-8 lg:mb-4 xl:mb-3 2xl:mb-2 max-w-full leading-relaxed font-medium">
                 Where learning is not memorized, but truly lived-- adaptive modules, holistic growth, and smart school solutions powered by AI.
               </p>
 
