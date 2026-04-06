@@ -236,7 +236,7 @@ const Hero = () => {
               </div>
 
               {/* Description */}
-              <p className="text-sm sm:text-base md:text-base lg:text-lg text-black mb-6 sm:mb-8 max-w-full leading-relaxed font-medium">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-black mb-6 sm:mb-8 lg:mb-4 xl:mb-3 2xl:mb-2 max-w-full leading-relaxed font-medium">
                 Where learning is not memorized, but truly lived-- adaptive modules, holistic growth, and smart school solutions powered by AI.
               </p>
 
