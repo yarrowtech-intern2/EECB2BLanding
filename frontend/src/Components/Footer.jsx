@@ -46,37 +46,37 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden py-10 xs:py-12 sm:py-16 md:py-20 bg-white">
+    <footer className="relative overflow-hidden py-10 sm:py-16 md:py-20 bg-white">
       {/* Soft glow background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white" />
-        <div className="absolute -left-20 xs:-left-32 sm:-left-40 top-8 xs:top-12 sm:top-16 h-[300px] xs:h-[400px] sm:h-[520px] w-[300px] xs:w-[400px] sm:w-[520px] rounded-full bg-yellow-100 opacity-70 blur-[80px] xs:blur-[120px] sm:blur-[140px]" />
-        <div className="absolute -right-20 xs:-right-32 sm:-right-40 bottom-5 xs:bottom-8 sm:bottom-10 h-[350px] xs:h-[500px] sm:h-[620px] w-[350px] xs:w-[500px] sm:w-[620px] rounded-full bg-orange-100 opacity-70 blur-[90px] xs:blur-[130px] sm:blur-[150px]" />
+        <div className="absolute -left-20 sm:-left-40 top-8 sm:top-16 h-[300px] sm:h-[520px] w-[300px] sm:w-[520px] rounded-full bg-yellow-100 opacity-70 blur-[80px] sm:blur-[140px]" />
+        <div className="absolute -right-20 sm:-right-40 bottom-5 sm:bottom-10 h-[350px] sm:h-[620px] w-[350px] sm:w-[620px] rounded-full bg-orange-100 opacity-70 blur-[90px] sm:blur-[150px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 md:gap-12 items-stretch">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-stretch">
           {/* LEFT CONTACT BOX */}
-          <div className="bg-yellow-400 rounded-2xl xs:rounded-3xl p-6 xs:p-7 sm:p-8 md:p-10 text-black shadow-lg border-2 border-yellow-500 transition-shadow hover:shadow-xl">
+          <div className="bg-yellow-400 rounded-3xl p-6 sm:p-8 md:p-10 text-black shadow-lg border-2 border-yellow-500 transition-shadow hover:shadow-xl">
             {/* Header */}
-            <div className="mb-5 xs:mb-6">
-              <h3 className="text-lg xs:text-xl sm:text-2xl font-black leading-tight">
+            <div className="mb-6">
+              <h3 className="text-xl sm:text-2xl font-black leading-tight">
                 Get In Touch With Us
               </h3>
-              <div className="w-16 xs:w-20 h-0.5 xs:h-1 bg-black mt-2 xs:mt-3 rounded-full" />
+              <div className="w-16 sm:w-20 h-1 bg-black mt-3 rounded-full" />
             </div>
 
             {/* Phone */}
             <a
               href={`tel:${phone}`}
-              className="flex gap-3 xs:gap-4 mb-5 xs:mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
             >
-              <FaPhoneAlt className="mt-0.5 xs:mt-1 flex-shrink-0 text-sm xs:text-base transition-transform group-hover:scale-110" />
+              <FaPhoneAlt className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
-                <p className="font-semibold text-sm xs:text-base mb-0.5 xs:mb-1">
+                <p className="font-semibold text-base mb-1">
                   Phone Number
                 </p>
-                <p className="text-sm xs:text-base break-words">{phone}</p>
+                <p className="text-base break-words">{phone}</p>
               </div>
             </a>
 
@@ -85,14 +85,14 @@ export default function Footer() {
               href={isMobile ? mailtoLink : gmailLink}
               target={isMobile ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="flex gap-3 xs:gap-4 mb-5 xs:mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
             >
-              <FaEnvelope className="mt-0.5 xs:mt-1 flex-shrink-0 text-sm xs:text-base transition-transform group-hover:scale-110" />
+              <FaEnvelope className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
-                <p className="font-semibold text-sm xs:text-base mb-0.5 xs:mb-1">
+                <p className="font-semibold text-base mb-1">
                   Email
                 </p>
-                <p className="text-sm xs:text-base break-all leading-tight">
+                <p className="text-base break-all leading-tight">
                   {email}
                 </p>
               </div>
@@ -103,14 +103,14 @@ export default function Footer() {
               href={mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-3 xs:gap-4 mb-8 xs:mb-10 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-10 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
             >
-              <FaMapMarkerAlt className="mt-0.5 xs:mt-1 flex-shrink-0 text-sm xs:text-base transition-transform group-hover:scale-110" />
+              <FaMapMarkerAlt className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
-                <p className="font-semibold text-sm xs:text-base mb-0.5 xs:mb-1">
+                <p className="font-semibold text-base mb-1">
                   Office Address
                 </p>
-                <p className="text-sm xs:text-base leading-relaxed">
+                <p className="text-base leading-relaxed">
                   {officeLocation.address}
                 </p>
               </div>
@@ -118,11 +118,11 @@ export default function Footer() {
 
             {/* Social */}
             <div>
-              <p className="font-semibold mb-3 xs:mb-4 text-sm xs:text-base">
+              <p className="font-semibold mb-4 text-base">
                 Follow Us
               </p>
 
-              <div className="flex items-center gap-2.5 xs:gap-3">
+              <div className="flex items-center gap-3">
                 {[
                   {
                     icon: FaLinkedinIn,
@@ -141,7 +141,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-                      w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11
+                      w-10 h-10 sm:w-11 sm:h-11
                       rounded-full bg-black text-yellow-400
                       flex items-center justify-center
                       transition-all duration-300
@@ -150,35 +150,32 @@ export default function Footer() {
                     "
                     aria-label={`Visit our ${label} page`}
                   >
-                    <Icon className="text-sm xs:text-base" />
+                    <Icon className="text-base" />
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* RIGHT MAP (NO BUTTON) */}
-          <a
-            href={mapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-2xl xs:rounded-3xl overflow-hidden shadow-lg border-2 border-yellow-500 bg-white block"
-            aria-label="Open location in Google Maps"
-          >
+          {/* RIGHT MAP */}
+          <div className="rounded-3xl overflow-hidden shadow-lg border-2 border-yellow-500 bg-white block relative">
             <iframe
               title="Electronic Educare Office Location - Dharmatala, Kolkata"
-              src={embedMapUrl}
-              className="w-full h-[280px] xs:h-[320px] sm:h-[360px] md:h-[420px] lg:h-full min-h-[280px] lg:min-h-[420px] border-0"
+              src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=3A,%20Bertram%20St,%20Esplanade,%20Dharmatala,%20Taltala,%20Kolkata,%20West%20Bengal%20700087+(Electronic%20Educare)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+              className="absolute inset-0 w-full h-full border-0"
+              style={{ minHeight: "280px" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-          </a>
+            {/* Fallback minimum height when absolute positioning doesn't stretch parent */}
+            <div className="w-full h-[320px] sm:h-[360px] md:h-[420px] lg:h-full min-h-[280px] lg:min-h-[420px] pointer-events-none"></div>
+          </div>
         </div>
 
         {/* COPYRIGHT */}
-        <div className="mt-10 xs:mt-12 sm:mt-14 text-center">
-          <p className="text-xs xs:text-sm font-medium text-slate-700">
+        <div className="mt-12 sm:mt-14 text-center">
+          <p className="text-sm font-medium text-slate-700">
             © {new Date().getFullYear()} Electronic Educare. All rights reserved.
           </p>
         </div>

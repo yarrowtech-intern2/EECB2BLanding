@@ -3,7 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaEye, FaBullseye } from "react-icons/fa";
 
-import aboutBg from "../assets/About Us.jpg"; 
 
 const AboutUs = () => {
   useEffect(() => {
@@ -19,34 +18,6 @@ const AboutUs = () => {
 
   return (
     <section id="about" className="relative w-full overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white m-0 p-0" style={{ margin: 0, padding: 0 }}>
-
-      {/* ===================== */}
-      {/* HERO IMAGE SECTION */}
-      {/* ===================== */}
-
-      <div className="relative w-full h-[300px] sm:h-[420px] md:h-[520px] lg:h-[620px] overflow-hidden m-0 p-0" style={{ margin: 0, padding: 0 }}>
-
-        <img
-          src={aboutBg}
-          alt="About EEC"
-          className="absolute inset-0 w-full h-full object-cover"
-          draggable="false"
-        />
-
-        <div className="absolute inset-0 bg-black/30" />
-
-        {/* Right Text */}
-        <div className="absolute inset-0 flex items-center justify-end px-6 sm:px-10 lg:px-20">
-
-          <h2
-            data-aos="fade-left"
-            className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black drop-shadow-xl"
-          >
-            About EEC
-          </h2>
-
-        </div>
-      </div>
 
       <div className="relative w-full py-14 sm:py-20 md:py-24 lg:py-28 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
         {/* soft background glow */}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import student from "../assets/student.jpg";
 import google from "../assets/google.png";
 import { FiPlus, FiMinus, FiX, FiDivide, FiBookOpen, FiZap, FiSettings, FiCpu, FiCheck, FiFilter } from "react-icons/fi";
@@ -222,14 +222,14 @@ const Hero = () => {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight sm:leading-tight md:leading-tight lg:leading-none mb-1 sm:mb-2 text-black break-words">
                   EEC
                 </h1>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-yellow-500 leading-tight break-words">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-amber-600 leading-tight break-words">
                   Electronic Educare
                 </h2>
               </div>
 
               {/* Typing Effect Text */}
               <div className="mb-6 sm:mb-8 mt-4 sm:mt-6 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] lg:min-h-[3.5rem] overflow-hidden">
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-yellow-500 tracking-wide break-words">
+                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-amber-600 tracking-wide break-words">
                   {displayedText}
                   <span className="animate-pulse ml-1">|</span>
                 </h3>
@@ -244,7 +244,7 @@ const Hero = () => {
               <div className="flex gap-3 sm:gap-4 items-center flex-wrap">
                 <button
                   onClick={scrollToContact}
-                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base border-2 w-full sm:w-auto text-center"
+                  className="bg-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-yellow-500 active:scale-95 transition-all text-sm sm:text-base w-full sm:w-auto text-center"
                   aria-label="Start Free Trial"
                 >
                   Start Free Trial

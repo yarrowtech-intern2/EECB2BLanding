@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import modulesBg from "/Modules.jpg";
 
 import {
   FaSchool,
@@ -91,31 +90,6 @@ export default function EECModules() {
 
   return (
     <section id="modules" className="relative overflow-hidden bg-white">
-      {/* ===================== */}
-      {/* TOP IMAGE BANNER PART */}
-      {/* ===================== */}
-      <div className="relative h-[420px] sm:h-[520px] lg:h-[640px] w-full overflow-hidden">
-        <img
-          src={modulesBg}
-          alt="Modules Background"
-          className="absolute inset-0 w-full h-full object-cover"
-          draggable="false"
-        />
-
-        {/* dark overlay */}
-        <div className="absolute inset-0 bg-black/20" />
-
-        {/* Right side text */}
-        <div className="absolute inset-0 flex items-center justify-end px-6 sm:px-10 lg:px-20">
-          <h2
-            className="text-white text-lg sm:text-2xl lg:text-3xl font-black drop-shadow-lg"
-            data-aos="fade-left"
-          >
-            Modules of EEC
-          </h2>
-        </div>
-      </div>
-
       {/* ===================== */}
       {/* WHITE SECTION + CARDS */}
       {/* ===================== */}
