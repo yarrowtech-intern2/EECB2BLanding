@@ -72,7 +72,7 @@ const Header = () => {
           : "0 2px 12px rgba(0, 0, 0, 0.04)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
 
           {/* LOGO */}
@@ -139,7 +139,7 @@ const Header = () => {
             borderTop: "1px solid rgba(255,255,255,0.3)",
           }}
         >
-          <div className="flex flex-col p-4 space-y-1 max-w-7xl mx-auto">
+          <div className="flex flex-col p-4 space-y-1 max-w-[88rem] mx-auto">
             {navItems.map((item) => (
               <button
                 key={item.id}

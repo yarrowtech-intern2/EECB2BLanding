@@ -47,7 +47,7 @@ const PlatformOverview = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white"
     >
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+      <div className="max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10">
         <div className="text-center">
           {/* MAIN TITLE */}
           <h1

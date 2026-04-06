@@ -75,7 +75,7 @@ const Features = () => {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-amber-100/20 blur-[120px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 z-10">
+        <div className="relative max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12 z-10">
           {/* Heading */}
           <div className="text-center mb-14" data-aos="fade-up">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4">

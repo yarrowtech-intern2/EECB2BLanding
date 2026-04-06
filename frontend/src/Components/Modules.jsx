@@ -101,7 +101,7 @@ export default function EECModules() {
           <div className="absolute -right-40 bottom-10 h-[520px] w-[520px] rounded-full bg-yellow-100 blur-[120px]" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12">
           {/* Heading */}
           <div className="text-center mb-10" data-aos="fade-up">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-4">

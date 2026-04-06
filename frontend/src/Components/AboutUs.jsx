@@ -27,7 +27,7 @@ const AboutUs = () => {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-amber-100/20 blur-[120px]" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="relative z-10 max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12">
 
           {/* Heading */}
 

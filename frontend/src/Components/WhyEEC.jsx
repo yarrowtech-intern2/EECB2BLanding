@@ -68,7 +68,7 @@ const WhyEEC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ==================== LEFT — Stats & Headline ==================== */}
           <div data-aos="fade-right">
