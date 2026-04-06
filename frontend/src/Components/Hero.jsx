@@ -133,10 +133,10 @@ const Hero = () => {
         <div className="absolute top-[35%] right-[35%] text-teal-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
           C₆H₆
         </div>
-        <div className="absolute bottom-[5%] left-[40%] text-indigo-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
+        <div className="absolute bottom-[5%] left-[45%] text-indigo-500/25 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
           PV = nRT
         </div>
-        <div className="absolute top-[42%] left-[22%] text-lime-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
+        <div className="absolute top-[75%] left-[22%] text-lime-600/30 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
           NH₃ + HCl → NH₄Cl
         </div>
         
@@ -156,35 +156,35 @@ const Hero = () => {
           tan(α)
         </div>
 
-        {/* Advanced Math & Physics */}
-        <div className="absolute top-[45%] left-[5%] text-blue-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
+        {/* Advanced Math & Physics - Moved away from text */}
+        <div className="hidden 2xl:block absolute top-[45%] left-[2%] text-blue-500/20 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
           d/dx
         </div>
-        <div className="absolute bottom-[25%] right-[20%] text-orange-500/35 text-3xl md:text-4xl lg:text-5xl font-serif italic animate-float-slow select-none pointer-events-none">
+        <div className="absolute bottom-[20%] right-[15%] text-orange-500/35 text-3xl md:text-4xl lg:text-5xl font-serif italic animate-float-slow select-none pointer-events-none">
           ∑ n=1
         </div>
-        <div className="absolute top-[10%] left-[30%] text-purple-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
+        <div className="absolute top-[8%] left-[30%] text-purple-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
           lim x→∞
         </div>
-        <div className="absolute top-[75%] right-[10%] text-red-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
+        <div className="absolute top-[85%] right-[10%] text-red-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
           eⁱπ + 1 = 0
         </div>
-        <div className="absolute bottom-[40%] right-[40%] text-blue-700/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
+        <div className="absolute bottom-[35%] right-[25%] text-blue-700/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
           λ = h/p
         </div>
 
-        {/* Chemistry Lab Elements - Acid & Funnel */}
-        <div className="absolute top-[30%] left-[40%] text-red-500/40 text-4xl md:text-5xl lg:text-6xl animate-float select-none pointer-events-none" title="Acid / Beaker">
+        {/* Chemistry Lab Elements - Moved lower/higher to avoid text */}
+        <div className="absolute top-[10%] left-[40%] text-red-500/30 text-4xl md:text-5xl lg:text-6xl animate-float select-none pointer-events-none" title="Acid / Beaker">
           <TbFlask />
           <span className="absolute -top-4 -right-8 text-xs font-bold text-red-600/60 font-sans">ACID</span>
         </div>
         
-        <div className="absolute bottom-[40%] left-[12%] text-blue-400/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none" title="Chong Funnel">
+        <div className="absolute bottom-[10%] left-[12%] text-blue-400/30 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none" title="Chong Funnel">
           <FiFilter className="rotate-180" />
           <span className="absolute -bottom-4 -right-12 text-xs font-bold text-blue-600/60 font-sans whitespace-nowrap">FUNNEL</span>
         </div>
 
-        <div className="absolute top-[55%] right-[20%] text-emerald-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-delayed select-none pointer-events-none">
+        <div className="absolute top-[75%] right-[20%] text-emerald-500/30 text-4xl md:text-5xl lg:text-6xl animate-float-delayed select-none pointer-events-none">
           <TbFlask2 />
         </div>
 
@@ -252,8 +252,8 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[640px] mt-16 sm:mt-24 lg:mt-28">
+            {/* RIGHT VISUAL SECTION - Moved UP on sm, m, xl, 2xl */}
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[640px] mt-8 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-0 2xl:-mt-10">
               {/* Decorative circles - Responsive */}
               <div 
                 className="absolute rounded-full border-4 border-yellow-200 opacity-30"
