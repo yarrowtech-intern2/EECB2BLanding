@@ -31,9 +31,25 @@ body,
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
+  /* Smoother scrolling on touch devices */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hardware acceleration for smoother animations */
+  text-rendering: optimizeLegibility;
+  backface-visibility: hidden;
+}
+
+/* Force hardware acceleration for all animations */
+.animate-float,
+.animate-float-slow,
+.animate-float-delayed,
+.hero-orbital-container,
+.hero-orbital-icon,
+.hero-student-image {
+  transform: translateZ(0);
+  will-change: transform;
 }

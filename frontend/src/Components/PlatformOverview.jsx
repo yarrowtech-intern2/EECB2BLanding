@@ -44,14 +44,13 @@ const PlatformOverview = () => {
   return (
     <section
       ref={sectionRef}
-      id="home"
       className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white"
     >
-      <div className="max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10">
+      <div className="max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-20 2xl:px-32 w-full relative z-10">
         <div className="text-center">
           {/* MAIN TITLE */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+            className="text-[clamp(2.5rem,8vw,14rem)] font-black leading-[1.1] tracking-tighter mb-10"
             data-aos="fade-up"
             data-aos-delay="200"
           >
@@ -59,6 +58,7 @@ const PlatformOverview = () => {
             <span className="text-yellow-500">Excellence</span>
             <span className="text-black">, Everywhere</span>
           </h1>
+
 
           {/* ROTATING TEXT (NO BOX) */}
           <div
