@@ -209,10 +209,10 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-[1400px] w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-16 items-start lg:items-center">
             
             {/* LEFT TEXT SECTION */}
-            <div className="flex flex-col justify-center order-2 lg:order-1 w-full text-center lg:text-left mt-6 sm:mt-8 lg:mt-0">
+            <div className="flex flex-col justify-start lg:justify-center order-2 lg:order-1 w-full text-center lg:text-left mt-2 sm:mt-8 lg:mt-0">
               {/* Badge */}
               <div className="inline-block mb-4 sm:mb-5 self-center lg:self-start">
                 <span className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-black px-4 sm:px-5 py-2 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap border-2 border-yellow-400 inline-block shadow-sm">
