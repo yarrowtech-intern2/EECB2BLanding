@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import service from "../assets/service.jpg";
+import service from "../assets/service.webp";
 
 import {
   FaChalkboardTeacher,

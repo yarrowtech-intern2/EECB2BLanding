@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Logo from "../assets/eec.jpeg";
+import Logo from "../assets/eec.webp";
 
 const HEADER_HEIGHT = 64;
 

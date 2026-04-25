@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import student from "../assets/student.jpg";
-import google from "../assets/google.png";
-import trophy from "../assets/trophy.png";
-import book from "../assets/book.png";
-import right from "../assets/right.png";
+import student from "../assets/student.webp";
+import google from "../assets/google.webp";
+import trophy from "../assets/trophy.webp";
+import book from "../assets/book.webp";
+import right from "../assets/right.webp";
 import { FiPlus, FiMinus, FiX, FiDivide, FiBookOpen, FiZap, FiSettings, FiCpu, FiCheck, FiFilter } from "react-icons/fi";
 import { TbMathIntegral, TbMathFunction, TbMathSymbols, TbSquareRoot, TbVariable, TbFlask, TbFlask2 } from "react-icons/tb";
 
