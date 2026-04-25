@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Home from "./Pages/Home";
 import Header from "./Components/Header";
 import Features from "./Components/Features";
+import Floating from "./Components/Floating";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/features" element={<Features />} />
         </Routes>
       </main>
+      <Floating />
     </>
   );
 }

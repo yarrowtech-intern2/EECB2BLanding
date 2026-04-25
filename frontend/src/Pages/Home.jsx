@@ -6,7 +6,6 @@ import Modules from "../Components/Modules";
 import Features from "../Components/Features";
 import AboutUs from "../Components/AboutUs";
 import Footer from "../Components/Footer";
-import Floating from "../Components/Floating";
 
 const Home = () => {
   return (
@@ -44,7 +43,6 @@ const Home = () => {
         <Contact />
       </section>
 
-      <Floating />
       <Footer />
     </main>
   );
