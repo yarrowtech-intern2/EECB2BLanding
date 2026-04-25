@@ -35,7 +35,7 @@ const FloatingActions = () => {
         className="
           fixed
           right-4 sm:right-6
-          bottom-4 sm:bottom-6
+          bottom-2 sm:bottom-6
           z-[1000]
           pointer-events-auto
         "
