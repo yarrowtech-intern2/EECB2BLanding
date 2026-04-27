@@ -46,7 +46,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden py-10 sm:py-16 md:py-20 bg-white">
+    <footer className="relative overflow-hidden py-10 sm:py-12 md:py-14 bg-white">
       {/* Soft glow background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white" />
@@ -69,7 +69,7 @@ export default function Footer() {
             {/* Phone */}
             <a
               href={`tel:${phone}`}
-              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group cursor-pointer"
             >
               <FaPhoneAlt className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
@@ -85,7 +85,7 @@ export default function Footer() {
               href={isMobile ? mailtoLink : gmailLink}
               target={isMobile ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-6 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group cursor-pointer"
             >
               <FaEnvelope className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
@@ -103,7 +103,7 @@ export default function Footer() {
               href={mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-4 mb-10 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group"
+              className="flex gap-4 mb-10 underline-offset-4 transition-all hover:opacity-80 md:hover:underline group cursor-pointer"
             >
               <FaMapMarkerAlt className="mt-1 flex-shrink-0 text-base transition-transform group-hover:scale-110" />
               <div className="min-w-0">
@@ -146,7 +146,7 @@ export default function Footer() {
                       flex items-center justify-center
                       transition-all duration-300
                       hover:scale-110 hover:shadow-lg hover:bg-neutral-800
-                      active:scale-95
+                      active:scale-95 cursor-pointer
                     "
                     aria-label={`Visit our ${label} page`}
                   >

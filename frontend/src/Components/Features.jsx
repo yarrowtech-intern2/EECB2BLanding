@@ -67,7 +67,7 @@ const Features = () => {
       {/* ===================== */}
       {/* WHITE SECTION + CARDS */}
       {/* ===================== */}
-      <div className="relative w-full py-14 sm:py-20 md:py-24 lg:py-28 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
+      <div className="relative w-full py-10 sm:py-14 md:py-16 lg:py-20 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
         {/* soft background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -left-48 top-20 h-[600px] w-[600px] rounded-full bg-yellow-200/30 blur-[160px]" />
@@ -78,7 +78,7 @@ const Features = () => {
         <div className="relative max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12 z-10">
           {/* Heading */}
           <div className="text-center mb-14" data-aos="fade-up">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4">
               <span className="text-slate-900">Our </span>
               <span className="text-yellow-400">Features</span>
             </h1>
@@ -98,56 +98,59 @@ const Features = () => {
                   data-aos-offset="200"
                   data-aos-duration="1000"
                   data-aos-delay={index * 80}
-                  className="
-                    group relative bg-white
+                  className="group cursor-pointer"
+                >
+                  <div className="
+                    relative bg-white
                     border border-yellow-200
                     rounded-[26px] p-8
                     shadow-[0_18px_40px_rgba(15,23,42,0.10)]
-                    hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]
-                    hover:-translate-y-2
+                    group-hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]
+                    group-hover:-translate-y-2
                     transition-all duration-500
                     overflow-hidden
-                  "
-                >
-                  {/* left strip */}
-                  <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
-                    <div
-                      className="absolute -right-10 top-0 h-full w-20 bg-white"
-                      style={{
-                        clipPath: "polygon(0 0, 100% 0, 0 100%)",
-                        opacity: 0.7,
-                      }}
-                    />
-                  </div>
-
-                  <div className="relative z-10">
-                    {/* icon */}
-                    <div className="mb-6">
+                    transform-gpu
+                  ">
+                    {/* left strip */}
+                    <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
                       <div
-                        className="
-                          w-14 h-14 rounded-2xl
-                          bg-yellow-400
-                          shadow-md
-                          flex items-center justify-center
-                          ring-4 ring-yellow-100
-                          group-hover:scale-110
-                          transition-transform duration-300
-                        "
-                      >
-                        <Icon className="text-white text-2xl" />
-                      </div>
+                        className="absolute -right-10 top-0 h-full w-20 bg-white"
+                        style={{
+                          clipPath: "polygon(0 0, 100% 0, 0 100%)",
+                          opacity: 0.7,
+                        }}
+                      />
                     </div>
 
-                    {/* title */}
-                    <h3 className="text-lg font-black text-slate-900 mb-3 group-hover:text-yellow-500 transition-colors">
-                      {item.title}
-                    </h3>
+                    <div className="relative z-10">
+                      {/* icon */}
+                      <div className="mb-6">
+                        <div
+                          className="
+                            w-14 h-14 rounded-2xl
+                            bg-yellow-400
+                            shadow-md
+                            flex items-center justify-center
+                            ring-4 ring-yellow-100
+                            group-hover:scale-110
+                            transition-transform duration-300
+                          "
+                        >
+                          <Icon className="text-white text-2xl" />
+                        </div>
+                      </div>
 
-                    {/* desc */}
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed">
-                      {item.desc}
-                    </p>
+                      {/* title */}
+                      <h3 className="text-lg font-black text-slate-900 mb-3 group-hover:text-yellow-500 transition-colors">
+                        {item.title}
+                      </h3>
+
+                      {/* desc */}
+                      <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );

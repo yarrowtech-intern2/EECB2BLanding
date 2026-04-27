@@ -12,36 +12,12 @@ const Home = () => {
     <main className="w-full overflow-x-hidden">
       {/* Hero already renders <section id="home"> internally */}
       <Hero />
-
-      {/* Why EEC */}
-      <section id="why-eec" className="scroll-mt-[64px]">
-        <WhyEEC />
-      </section>
-
-      {/* Platform Overview */}
-      <section id="platform" className="scroll-mt-[64px]">
-        <PlatformOverview />
-      </section>
-
-      {/* Modules */}
-      <section id="modules" className="scroll-mt-[64px]">
-        <Modules />
-      </section>
-
-      {/* Features */}
-      <section id="features" className="scroll-mt-[64px]">
-        <Features />
-      </section>
-
-      {/* About Us */}
-      <section id="about" className="scroll-mt-[64px]">
-        <AboutUs />
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="scroll-mt-[64px]">
-        <Contact />
-      </section>
+      <WhyEEC />
+      <PlatformOverview />
+      <Modules />
+      <Features />
+      <AboutUs />
+      <Contact />
 
       <Footer />
     </main>

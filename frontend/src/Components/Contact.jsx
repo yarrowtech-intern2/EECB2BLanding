@@ -124,7 +124,7 @@ const ContactForm = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen pt-28 pb-24 overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white"
+      className="relative pt-16 pb-16 overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -187,16 +187,18 @@ const ContactForm = () => {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-4 bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.06)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(15,23,42,0.1)] transition-all duration-300"
+                  className="group cursor-pointer"
                   data-aos="fade-up"
                   data-aos-delay={200 + i * 100}
                 >
-                  <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center shrink-0`}>
-                    <div className="w-2.5 h-2.5 bg-white rounded-full" />
-                  </div>
-                  <div>
-                    <p className="font-extrabold text-slate-900 text-sm">{item.title}</p>
-                    <p className="text-slate-500 text-xs mt-0.5">{item.desc}</p>
+                  <div className="flex items-center gap-4 bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.06)] group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(15,23,42,0.1)] transition-all duration-300 transform-gpu">
+                    <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center shrink-0`}>
+                      <div className="w-2.5 h-2.5 bg-white rounded-full" />
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-slate-900 text-sm">{item.title}</p>
+                      <p className="text-slate-500 text-xs mt-0.5">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -304,7 +306,7 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group w-full mt-3 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 text-black font-extrabold text-base py-4 hover:from-yellow-300 hover:to-amber-300 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                  className="group w-full mt-3 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 text-black font-extrabold text-base py-4 hover:from-yellow-300 hover:to-amber-300 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {submitting ? (
                     <>

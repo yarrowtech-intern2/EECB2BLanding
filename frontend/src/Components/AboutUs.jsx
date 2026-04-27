@@ -19,7 +19,7 @@ const AboutUs = () => {
   return (
     <section id="about" className="relative w-full overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white m-0 p-0" style={{ margin: 0, padding: 0 }}>
 
-      <div className="relative w-full py-14 sm:py-20 md:py-24 lg:py-28 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
+      <div className="relative w-full py-8 sm:py-10 md:py-12 lg:py-14 m-0 px-0" style={{ margin: 0, paddingLeft: 0, paddingRight: 0 }}>
         {/* soft background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -left-48 top-20 h-[600px] w-[600px] rounded-full bg-yellow-200/30 blur-[160px]" />
@@ -84,38 +84,40 @@ const AboutUs = () => {
                 data-aos="fade-right"
                 data-aos-offset="200"
                 data-aos-duration="1000"
-                className="group relative bg-white border border-yellow-200 rounded-[26px] p-6 sm:p-8 md:p-10 shadow-[0_18px_40px_rgba(15,23,42,0.10)] m-0 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]"
+                className="group cursor-pointer"
                 style={{ margin: 0 }}
               >
-                {/* left strip */}
-                <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
-                  <div
-                    className="absolute -right-10 top-0 h-full w-20 bg-white"
-                    style={{
-                      clipPath: "polygon(0 0, 100% 0, 0 100%)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-
-                <div className="relative z-10">
-                  <div className="mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-yellow-400 shadow-md flex items-center justify-center ring-4 ring-yellow-100 group-hover:scale-110 transition-transform duration-300">
-                      <FaEye className="text-white text-2xl" />
-                    </div>
+                <div className="relative bg-white border border-yellow-200 rounded-[26px] p-6 sm:p-8 md:p-10 shadow-[0_18px_40px_rgba(15,23,42,0.10)] m-0 overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)] transform-gpu">
+                  {/* left strip */}
+                  <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
+                    <div
+                      className="absolute -right-10 top-0 h-full w-20 bg-white"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 0 100%)",
+                        opacity: 0.7,
+                      }}
+                    />
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-yellow-500 transition-colors">
-                    Our Vision
-                  </h2>
+                  <div className="relative z-10">
+                    <div className="mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-yellow-400 shadow-md flex items-center justify-center ring-4 ring-yellow-100 group-hover:scale-110 transition-transform duration-300">
+                        <FaEye className="text-white text-2xl" />
+                      </div>
+                    </div>
 
-                  <p className="text-slate-700 text-[15px] sm:text-base leading-relaxed m-0" style={{ margin: 0 }}>
-                    At EEC, we envision a future where education transcends
-                    boundaries — a world where every learner, teacher,
-                    and institution is empowered with technology that
-                    makes learning smarter, seamless, and transformative.
-                  </p>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-yellow-500 transition-colors">
+                      Our Vision
+                    </h2>
+
+                    <p className="text-slate-700 text-[15px] sm:text-base leading-relaxed m-0" style={{ margin: 0 }}>
+                      At EEC, we envision a future where education transcends
+                      boundaries — a world where every learner, teacher,
+                      and institution is empowered with technology that
+                      makes learning smarter, seamless, and transformative.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -125,92 +127,93 @@ const AboutUs = () => {
                 data-aos="fade-left"
                 data-aos-offset="200"
                 data-aos-duration="1000"
-                className="group relative bg-white border border-yellow-200 rounded-[26px] p-6 sm:p-8 md:p-10 shadow-[0_18px_40px_rgba(15,23,42,0.10)] m-0 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)]"
+                className="group cursor-pointer"
                 style={{ margin: 0 }}
               >
-                {/* left strip */}
-                <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
-                  <div
-                    className="absolute -right-10 top-0 h-full w-20 bg-white"
-                    style={{
-                      clipPath: "polygon(0 0, 100% 0, 0 100%)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-
-                <div className="relative z-10">
-                  <div className="mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-yellow-400 shadow-md flex items-center justify-center ring-4 ring-yellow-100 group-hover:scale-110 transition-transform duration-300">
-                      <FaBullseye className="text-white text-2xl" />
-                    </div>
+                <div className="relative bg-white border border-yellow-200 rounded-[26px] p-6 sm:p-8 md:p-10 shadow-[0_18px_40px_rgba(15,23,42,0.10)] m-0 overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_22px_55px_rgba(15,23,42,0.16)] transform-gpu">
+                  {/* left strip */}
+                  <div className="absolute inset-y-0 left-0 w-[78px] pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-b from-yellow-100 to-orange-50" />
+                    <div
+                      className="absolute -right-10 top-0 h-full w-20 bg-white"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 0 100%)",
+                        opacity: 0.7,
+                      }}
+                    />
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-yellow-500 transition-colors">
-                    Our Mission
-                  </h2>
+                  <div className="relative z-10">
+                    <div className="mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-yellow-400 shadow-md flex items-center justify-center ring-4 ring-yellow-100 group-hover:scale-110 transition-transform duration-300">
+                        <FaBullseye className="text-white text-2xl" />
+                      </div>
+                    </div>
 
-                  <p className="text-slate-700 mb-6 text-[15px] sm:text-base m-0" style={{ margin: 0 }}>
-                    Our mission is to redefine learning and institutional
-                    growth through an intelligent and integrated education ecosystem.
-                  </p>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 group-hover:text-yellow-500 transition-colors">
+                      Our Mission
+                    </h2>
 
-                  <ul className="space-y-3 text-slate-700 text-[15px] sm:text-base m-0" style={{ margin: 0 }}>
+                    <p className="text-slate-700 mb-6 text-[15px] sm:text-base m-0" style={{ margin: 0 }}>
+                      Our mission is to redefine learning and institutional
+                      growth through an intelligent and integrated education ecosystem.
+                    </p>
 
-                  <li className="flex gap-3 m-0" style={{ margin: 0 }}>
-                    <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
-                    <span>
-                      <span className="font-bold text-slate-900">
-                        Empowering Institutions:
-                      </span>{" "}
-                      Powerful LMS & ERP solutions.
-                    </span>
-                  </li>
+                    <ul className="space-y-3 text-slate-700 text-[15px] sm:text-base m-0" style={{ margin: 0 }}>
 
-                  <li className="flex gap-3 m-0" style={{ margin: 0 }}>
-                    <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
-                    <span>
-                      <span className="font-bold text-slate-900">
-                        Seamless Collaboration:
-                      </span>{" "}
-                      Real-time school communication.
-                    </span>
-                  </li>
+                    <li className="flex gap-3 m-0" style={{ margin: 0 }}>
+                      <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span>
+                        <span className="font-bold text-slate-900">
+                          Empowering Institutions:
+                        </span>{" "}
+                        Powerful LMS & ERP solutions.
+                      </span>
+                    </li>
 
-                  <li className="flex gap-3 m-0" style={{ margin: 0 }}>
-                    <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
-                    <span>
-                      <span className="font-bold text-slate-900">
-                        Holistic Education:
-                      </span>{" "}
-                      Creativity, wellness, and life skills.
-                    </span>
-                  </li>
+                    <li className="flex gap-3 m-0" style={{ margin: 0 }}>
+                      <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span>
+                        <span className="font-bold text-slate-900">
+                          Seamless Collaboration:
+                        </span>{" "}
+                        Real-time school communication.
+                      </span>
+                    </li>
 
-                  <li className="flex gap-3 m-0" style={{ margin: 0 }}>
-                    <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
-                    <span>
-                      <span className="font-bold text-slate-900">
-                        Inclusive Innovation:
-                      </span>{" "}
-                      Affordable scalable technology.
-                    </span>
-                  </li>
+                    <li className="flex gap-3 m-0" style={{ margin: 0 }}>
+                      <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span>
+                        <span className="font-bold text-slate-900">
+                          Holistic Education:
+                        </span>{" "}
+                        Creativity, wellness, and life skills.
+                      </span>
+                    </li>
 
-                  <li className="flex gap-3 m-0" style={{ margin: 0 }}>
-                    <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
-                    <span>
-                      <span className="font-bold text-slate-900">
-                        Future-Driven Excellence:
-                      </span>{" "}
-                      Preparing learners for the digital world.
-                    </span>
-                  </li>
+                    <li className="flex gap-3 m-0" style={{ margin: 0 }}>
+                      <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span>
+                        <span className="font-bold text-slate-900">
+                          Inclusive Innovation:
+                        </span>{" "}
+                        Affordable scalable technology.
+                      </span>
+                    </li>
 
-                  </ul>
+                    <li className="flex gap-3 m-0" style={{ margin: 0 }}>
+                      <span className="mt-2 w-2 h-2 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span>
+                        <span className="font-bold text-slate-900">
+                          Future-Driven Excellence:
+                        </span>{" "}
+                        Preparing learners for the digital world.
+                      </span>
+                    </li>
+
+                    </ul>
+                  </div>
                 </div>
-
               </div>
 
             </div>

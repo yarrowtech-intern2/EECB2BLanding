@@ -53,7 +53,7 @@ const WhyEEC = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section id="why-eec" className="relative overflow-hidden py-8 sm:py-12 lg:py-16">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -126,7 +126,7 @@ const WhyEEC = () => {
                   window.scrollTo({ top: offset, behavior: "smooth" });
                 }
               }}
-              className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 px-7 py-3.5 font-extrabold text-black shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:from-yellow-300 hover:to-amber-300 hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] hover:scale-105 active:scale-95 transition-all duration-200"
+              className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 px-7 py-3.5 font-extrabold text-black shadow-[0_8px_30px_rgba(251,191,36,0.3)] hover:from-yellow-300 hover:to-amber-300 hover:shadow-[0_12px_40px_rgba(251,191,36,0.4)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               Get Started
               <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-200" />
@@ -143,28 +143,30 @@ const WhyEEC = () => {
                   key={index}
                   data-aos="fade-left"
                   data-aos-delay={index * 150}
-                  className="group relative rounded-2xl bg-white/[0.07] backdrop-blur-md border border-white/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.12] hover:border-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden"
+                  className="group cursor-pointer"
                 >
-                  {/* Left accent bar */}
-                  <div
-                    className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${item.color} rounded-l-2xl`}
-                  />
-
-                  <div className="flex items-start gap-5">
-                    {/* Icon */}
+                  <div className="relative rounded-2xl bg-white/[0.07] backdrop-blur-md border border-white/10 p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white/[0.12] group-hover:border-white/20 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden transform-gpu">
+                    {/* Left accent bar */}
                     <div
-                      className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shrink-0 shadow-lg ring-4 ring-white/5 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon className="text-xl text-white" />
-                    </div>
+                      className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${item.color} rounded-l-2xl`}
+                    />
 
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-extrabold text-lg leading-snug mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-white/70 text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
+                    <div className="flex items-start gap-5">
+                      {/* Icon */}
+                      <div
+                        className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shrink-0 shadow-lg ring-4 ring-white/5 group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <Icon className="text-xl text-white" />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-white font-extrabold text-lg leading-snug mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -44,13 +44,14 @@ const PlatformOverview = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white"
+      id="platform"
+      className="relative flex items-center justify-center pt-14 pb-14 overflow-hidden bg-white"
     >
       <div className="max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-20 2xl:px-32 w-full relative z-10">
         <div className="text-center">
           {/* MAIN TITLE */}
           <h1
-            className="text-[clamp(2.5rem,8vw,14rem)] font-black leading-[1.1] tracking-tighter mb-10"
+            className="text-[clamp(2rem,5vw,6rem)] font-black leading-[1.1] tracking-tighter mb-10"
             data-aos="fade-up"
             data-aos-delay="200"
           >

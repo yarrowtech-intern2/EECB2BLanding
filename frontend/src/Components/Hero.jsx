@@ -77,133 +77,57 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-yellow-50/40 to-white"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-50 via-amber-50/30 to-slate-100"
       style={{
         paddingTop: "64px",
-        paddingBottom: "40px",
+        paddingBottom: "0px",
         boxSizing: "border-box",
       }}
     >
       {/* Background glowing elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-black/[0.02]">
         <div className="absolute -left-48 top-20 h-[600px] w-[600px] rounded-full bg-yellow-200/30 blur-[120px]" />
         <div className="absolute -right-48 bottom-20 h-[600px] w-[600px] rounded-full bg-orange-200/30 blur-[120px]" />
         
-        {/* Floating Rhombuses */}
-        <div className="absolute top-[10%] left-[15%] w-10 h-10 md:w-16 md:h-16 border-2 border-yellow-400/40 rotate-45 animate-float-slow select-none pointer-events-none" />
-        <div className="absolute bottom-[20%] right-[10%] w-16 h-16 md:w-24 md:h-24 border-2 border-orange-400/40 rotate-45 animate-float-delayed select-none pointer-events-none" />
-        <div className="absolute top-[40%] right-[25%] w-8 h-8 md:w-12 md:h-12 bg-yellow-300/20 rotate-45 animate-float select-none pointer-events-none" />
-        <div className="absolute top-[5%] right-[40%] w-12 h-12 md:w-20 md:h-20 border border-blue-400/30 rotate-45 animate-float-slow select-none pointer-events-none" />
-        <div className="absolute bottom-[35%] left-[10%] w-9 h-9 md:w-14 md:h-14 border border-purple-400/30 rotate-45 animate-float select-none pointer-events-none" />
-        <div className="absolute top-[60%] left-[30%] w-7 h-7 md:w-10 md:h-10 border border-emerald-400/30 rotate-45 animate-float-delayed select-none pointer-events-none" />
+        {/* Scattered Rhombuses */}
+        <div className="absolute top-[5%] left-[5%] w-8 h-8 md:w-12 md:h-12 border-2 border-yellow-400/20 rotate-45 animate-float-slow select-none pointer-events-none" />
+        <div className="absolute top-[15%] right-[8%] w-10 h-10 md:w-14 md:h-14 border-2 border-orange-400/20 rotate-45 animate-float-delayed select-none pointer-events-none" />
+        <div className="absolute bottom-[10%] left-[8%] w-12 h-12 md:w-16 md:h-16 border-2 border-yellow-300/20 rotate-45 animate-float select-none pointer-events-none" />
+        <div className="absolute bottom-[15%] right-[12%] w-14 h-14 md:w-20 md:h-20 border-2 border-blue-400/15 rotate-45 animate-float-slow select-none pointer-events-none" />
+        <div className="absolute top-[40%] left-[2%] w-6 h-6 bg-yellow-200/10 rotate-45 animate-float-delayed select-none pointer-events-none" />
+        <div className="absolute top-[60%] right-[3%] w-8 h-8 bg-orange-200/10 rotate-45 animate-float select-none pointer-events-none" />
+        <div className="absolute top-[80%] left-[15%] w-10 h-10 border border-emerald-400/20 rotate-45 animate-float-slow select-none pointer-events-none" />
+        <div className="absolute top-[20%] left-[25%] w-5 h-5 border border-purple-400/20 rotate-45 animate-float-delayed select-none pointer-events-none" />
 
-        {/* Equations & Math Symbols - Reduced density for cleaner look */}
-        <div className="absolute top-[15%] left-[10%] text-yellow-600/30 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-slow select-none pointer-events-none">
-          E = mc²
-        </div>
-        <div className="absolute bottom-[15%] left-[20%] text-orange-600/30 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
-          a² + b² = c²
-        </div>
-        <div className="absolute top-[25%] right-[15%] text-blue-600/30 text-2xl md:text-3xl lg:text-4xl animate-float-delayed select-none pointer-events-none">
-          ∫ f(x) dx
-        </div>
-        <div className="absolute bottom-[30%] left-[5%] text-purple-600/30 text-3xl md:text-4xl lg:text-5xl animate-float select-none pointer-events-none">
-          ∇ × B = μ₀J
-        </div>
-        <div className="absolute top-[50%] right-[5%] text-emerald-600/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
-          ∂u/∂t = α∇²u
-        </div>
+        {/* Scattered Equations & Symbols */}
+        <div className="absolute top-[10%] left-[15%] text-yellow-600/20 text-xl md:text-2xl font-serif italic animate-float-slow select-none pointer-events-none">E = mc²</div>
+        <div className="absolute top-[8%] right-[35%] text-blue-600/20 text-2xl md:text-3xl animate-float-delayed select-none pointer-events-none">∫ f(x) dx</div>
+        <div className="absolute bottom-[20%] left-[25%] text-orange-600/20 text-lg md:text-xl font-serif italic animate-float select-none pointer-events-none">a² + b² = c²</div>
+        <div className="absolute bottom-[5%] right-[30%] text-purple-600/20 text-3xl md:text-4xl animate-float-slow select-none pointer-events-none">∇ × B = μ₀J</div>
+        <div className="absolute top-[45%] right-[10%] text-emerald-600/20 text-3xl md:text-4xl animate-float select-none pointer-events-none">∂u/∂t = α∇²u</div>
+        <div className="absolute top-[30%] left-[40%] text-indigo-600/20 text-xl font-serif italic animate-float-delayed select-none pointer-events-none">sin(θ)</div>
+        <div className="absolute bottom-[35%] right-[45%] text-pink-600/20 text-2xl font-serif italic animate-float-slow select-none pointer-events-none">cos(x)</div>
+        <div className="absolute top-[70%] left-[5%] text-yellow-700/20 text-xl font-serif italic animate-float select-none pointer-events-none">tan(α)</div>
+        <div className="absolute top-[15%] right-[25%] text-purple-500/20 text-2xl font-serif italic animate-float-delayed select-none pointer-events-none">lim x→∞</div>
+        <div className="absolute bottom-[40%] left-[10%] text-blue-700/20 text-xl font-serif italic animate-float-slow select-none pointer-events-none">λ = h/p</div>
+        <div className="absolute bottom-[12%] right-[5%] text-red-500/20 text-2xl font-serif italic animate-float select-none pointer-events-none">eⁱπ + 1 = 0</div>
+        <div className="absolute top-[65%] right-[25%] text-orange-500/20 text-3xl font-serif italic animate-float-slow select-none pointer-events-none">∑ n=1</div>
+        <div className="absolute bottom-[8%] left-[45%] text-indigo-500/15 text-2xl font-serif italic animate-float-delayed select-none pointer-events-none">PV = nRT</div>
 
-        {/* Chemistry Equations & Organic Formulas */}
-        <div className="absolute top-[8%] left-[25%] text-rose-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-delayed select-none pointer-events-none">
-          C₆H₁₂O₆
-        </div>
-        <div className="absolute bottom-[22%] right-[15%] text-cyan-600/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-slow select-none pointer-events-none">
-          CH₃CH₂OH
-        </div>
-        <div className="absolute top-[65%] left-[8%] text-amber-600/35 text-3xl md:text-4xl lg:text-5xl font-serif animate-float select-none pointer-events-none">
-          H₂SO₄
-        </div>
-        
-        {/* Benzene Ring SVG */}
-        <div className="absolute top-1/2 left-[15%] opacity-20 text-emerald-600 animate-float-slow select-none pointer-events-none">
-          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M50 5 L89 27.5 L89 72.5 L50 95 L11 72.5 L11 27.5 Z" />
-            <circle cx="50" cy="50" r="25" />
-          </svg>
-        </div>
+        {/* Scattered Chemistry Symbols */}
+        <div className="absolute top-[25%] right-[20%] text-rose-600/20 text-xl md:text-2xl font-serif italic animate-float-delayed select-none pointer-events-none">C₆H₁₂O₆</div>
+        <div className="absolute bottom-[25%] right-[15%] text-cyan-600/20 text-2xl md:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">CH₃CH₂OH</div>
+        <div className="absolute top-[85%] left-[30%] text-amber-600/20 text-3xl md:text-4xl font-serif animate-float select-none pointer-events-none">H₂SO₄</div>
+        <div className="absolute top-[55%] left-[15%] text-teal-600/20 text-2xl font-serif italic animate-float-slow select-none pointer-events-none">C₆H₆</div>
+        <div className="absolute bottom-[45%] right-[5%] text-lime-600/20 text-xl font-serif italic animate-float-delayed select-none pointer-events-none">NH₃ + HCl</div>
 
-        <div className="absolute top-[35%] right-[35%] text-teal-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
-          C₆H₆
-        </div>
-        <div className="absolute bottom-[5%] left-[45%] text-indigo-500/25 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
-          PV = nRT
-        </div>
-        <div className="absolute top-[75%] left-[22%] text-lime-600/30 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
-          NH₃ + HCl → NH₄Cl
-        </div>
-        
-        {/* DNA/Molecular Icon */}
-        <div className="absolute bottom-1/4 left-[35%] opacity-20 text-blue-500 animate-float-delayed select-none pointer-events-none">
-          <FiCpu />
-        </div>
-
-        {/* Trigonometry & More Math */}
-        <div className="absolute top-[22%] left-[45%] text-indigo-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
-          sin(θ)
-        </div>
-        <div className="absolute bottom-[10%] right-[35%] text-pink-600/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float select-none pointer-events-none">
-          cos(x)
-        </div>
-        <div className="absolute top-[70%] left-[15%] text-yellow-700/35 text-lg md:text-xl lg:text-2xl font-serif italic animate-float-delayed select-none pointer-events-none">
-          tan(α)
-        </div>
-
-        {/* Advanced Math & Physics - Moved away from text */}
-        <div className="hidden 2xl:block absolute top-[45%] left-[2%] text-blue-500/20 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
-          d/dx
-        </div>
-        <div className="absolute bottom-[20%] right-[15%] text-orange-500/35 text-3xl md:text-4xl lg:text-5xl font-serif italic animate-float-slow select-none pointer-events-none">
-          ∑ n=1
-        </div>
-        <div className="absolute top-[8%] left-[30%] text-purple-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float-delayed select-none pointer-events-none">
-          lim x→∞
-        </div>
-        <div className="absolute top-[85%] right-[10%] text-red-500/35 text-2xl md:text-3xl lg:text-4xl font-serif italic animate-float select-none pointer-events-none">
-          eⁱπ + 1 = 0
-        </div>
-        <div className="absolute bottom-[35%] right-[25%] text-blue-700/35 text-xl md:text-2xl lg:text-3xl font-serif italic animate-float-slow select-none pointer-events-none">
-          λ = h/p
-        </div>
-
-        {/* Chemistry Lab Elements - Moved lower/higher to avoid text */}
-        <div className="absolute top-[10%] left-[40%] text-red-500/30 text-4xl md:text-5xl lg:text-6xl animate-float select-none pointer-events-none" title="Acid / Beaker">
-          <TbFlask />
-          <span className="absolute -top-4 -right-8 text-xs font-bold text-red-600/60 font-sans">ACID</span>
-        </div>
-        
-        <div className="absolute bottom-[10%] left-[12%] text-blue-400/30 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none" title="Chong Funnel">
-          <FiFilter className="rotate-180" />
-          <span className="absolute -bottom-4 -right-12 text-xs font-bold text-blue-600/60 font-sans whitespace-nowrap">FUNNEL</span>
-        </div>
-
-        <div className="absolute top-[75%] right-[20%] text-emerald-500/30 text-4xl md:text-5xl lg:text-6xl animate-float-delayed select-none pointer-events-none">
-          <TbFlask2 />
-        </div>
-
-        {/* Floating Math Symbols */}
-        <div className="absolute top-1/4 left-1/2 text-yellow-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
-          <FiPlus />
-        </div>
-        <div className="absolute bottom-1/3 left-1/4 text-purple-500/40 text-5xl md:text-6xl lg:text-7xl animate-float select-none pointer-events-none">
-          <TbMathIntegral />
-        </div>
-        <div className="absolute top-1/3 right-[20%] text-orange-500/40 text-3xl md:text-4xl lg:text-5xl animate-float-delayed select-none pointer-events-none">
-          <FiMinus />
-        </div>
-        <div className="absolute bottom-1/4 right-[30%] text-emerald-500/40 text-4xl md:text-5xl lg:text-6xl animate-float-slow select-none pointer-events-none">
-          <span className="font-serif italic font-bold">∇</span>
-        </div>
+        {/* Icons scattered */}
+        <div className="absolute top-[35%] left-[35%] text-red-500/20 text-4xl animate-float-slow select-none pointer-events-none"><TbFlask /></div>
+        <div className="absolute bottom-[30%] right-[30%] text-emerald-500/20 text-4xl animate-float-delayed select-none pointer-events-none"><TbFlask2 /></div>
+        <div className="absolute top-[10%] left-[60%] text-yellow-500/20 text-5xl animate-float-slow select-none pointer-events-none"><FiPlus /></div>
+        <div className="absolute bottom-[10%] left-[70%] text-purple-500/20 text-6xl animate-float-delayed select-none pointer-events-none"><TbMathIntegral /></div>
+        <div className="absolute top-[75%] right-[40%] text-blue-400/20 text-5xl animate-float-slow select-none pointer-events-none"><FiFilter className="rotate-180" /></div>
+        <div className="absolute top-[50%] left-[5%] opacity-10 text-blue-500 animate-float-delayed select-none pointer-events-none"><FiCpu /></div>
       </div>
 
       {/* Content */}
@@ -247,7 +171,7 @@ const Hero = () => {
               <div className="flex justify-center lg:justify-start gap-4">
                 <button
                   onClick={scrollToContact}
-                  className="group relative bg-yellow-400 text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-black hover:bg-yellow-500 active:scale-95 transition-all text-xs sm:text-sm shadow-xl shadow-yellow-200 overflow-hidden"
+                   className="group relative bg-yellow-400 text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-black hover:bg-yellow-500 active:scale-95 transition-all text-xs sm:text-sm shadow-xl shadow-yellow-200 overflow-hidden cursor-pointer"
                   aria-label="Start Free Trial"
                 >
                   <span className="relative z-10">Start Free Trial</span>
