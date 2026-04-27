@@ -163,12 +163,12 @@ const Hero = () => {
               </div>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black/80 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black/80 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Where learning is lived through adaptive modules, holistic growth, and smart AI school solutions.
               </p>
 
               {/* Button */}
-              <div className="flex justify-center lg:justify-start gap-4">
+              <div className="flex justify-center lg:justify-start gap-4 -mt-2 sm:mt-0">
                 <button
                   onClick={scrollToContact}
                    className="group relative bg-yellow-400 text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-black hover:bg-yellow-500 active:scale-95 transition-all text-xs sm:text-sm shadow-xl shadow-yellow-200 overflow-hidden cursor-pointer"
@@ -181,7 +181,7 @@ const Hero = () => {
             </div>
  
             {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[640px] mt-2 lg:mt-0 lg:-translate-y-5 transition-transform duration-700">
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[640px] -mt-6 sm:-mt-10 lg:mt-0 lg:-translate-y-5 transition-transform duration-700">
               {/* PERFECT CIRCULAR ORBITAL SYSTEM */}
               <div 
                 className="hero-orbital-container absolute"

@@ -83,7 +83,7 @@ const Header = () => {
             : "0 4px 12px rgba(0, 0, 0, 0.04)",
         }}
       >
-        <div className="relative z-10 max-w-[88rem] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="relative z-10 w-full px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-16 md:h-20 transition-all duration-300">
 
             {/* LOGO */}
@@ -150,58 +150,45 @@ const Header = () => {
         </div>
       </header>
 
-      {/* MOBILE MENU OVERLAY — Full Screen Fixed */}
+      {/* MOBILE MENU DROPDOWN — Compact */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ease-in-out ${
-          menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+        className={`fixed top-16 left-0 w-full z-40 md:hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
         style={{
-          background: "rgba(255,255,255,0.98)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
+          background: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(0,0,0,0.05)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
         }}
       >
-        <div className="flex flex-col h-full pt-24 pb-10 px-6 space-y-2 overflow-y-auto">
-          <div className="flex flex-col space-y-2">
-            {navItems.map((item, idx) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  scrollToSection(item.id);
-                  setMenuOpen(false);
-                }}
-                className={`text-left py-4 px-6 rounded-2xl font-bold text-xl transition-all active:scale-[0.98] cursor-pointer ${
-                  activeSection === item.id
-                    ? "bg-yellow-400 text-black shadow-lg shadow-yellow-200"
-                    : "text-gray-800 hover:bg-gray-50 border border-transparent hover:border-gray-100"
-                }`}
-                style={{
-                  transitionDelay: `${idx * 50}ms`
-                }}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-          
-          <div className="mt-auto pt-10">
+        <div className="flex flex-col p-4 space-y-1">
+          {navItems.map((item) => (
             <button
+              key={item.id}
               onClick={() => {
-                scrollToSection("contact");
+                scrollToSection(item.id);
                 setMenuOpen(false);
               }}
-              className="w-full bg-black text-white py-5 rounded-2xl font-black text-xl shadow-xl active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer"
+              className={`text-left py-3 px-4 rounded-xl font-semibold transition-all cursor-pointer ${
+                activeSection === item.id
+                  ? "bg-yellow-100 text-yellow-600"
+                  : "hover:bg-gray-50 text-gray-800"
+              }`}
             >
-              Get Started
-              <span className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center">
-                <FaBars className="text-black text-xs rotate-90" />
-              </span>
+              {item.name}
             </button>
-            
-            <p className="text-center text-gray-400 text-sm mt-8 font-medium">
-              © {new Date().getFullYear()} Electronic Educare
-            </p>
-          </div>
+          ))}
+          <button
+            onClick={() => {
+              scrollToSection("contact");
+              setMenuOpen(false);
+            }}
+            className="mt-2 bg-yellow-400 hover:bg-yellow-500 text-black py-3 rounded-xl font-bold transition active:scale-95 cursor-pointer"
+          >
+            Get Started
+          </button>
         </div>
       </div>
     </>
