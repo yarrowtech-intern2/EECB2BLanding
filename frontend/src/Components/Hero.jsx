@@ -77,7 +77,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-50 via-amber-50/30 to-slate-100"
+      className="relative w-full min-h-screen flex items-start lg:items-center justify-center overflow-hidden bg-gradient-to-b from-slate-50 via-amber-50/30 to-slate-100"
       style={{
         paddingTop: "64px",
         paddingBottom: "0px",
@@ -181,7 +181,7 @@ const Hero = () => {
             </div>
  
             {/* RIGHT VISUAL SECTION */}
-            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[280px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[640px] -mt-6 sm:-mt-10 lg:mt-0 lg:-translate-y-5 transition-transform duration-700">
+            <div className="relative w-full flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[640px] mt-2 sm:-mt-10 lg:mt-0 lg:-translate-y-5 transition-transform duration-700">
               {/* PERFECT CIRCULAR ORBITAL SYSTEM */}
               <div 
                 className="hero-orbital-container absolute"
@@ -272,10 +272,10 @@ const Hero = () => {
       <style>{`
         :root {
           /* Mobile (< 640px) */
-          --orbital-size: 236px;
-          --track-size: 216px;
-          --icon-size: 38px;
-          --student-size: 150px;
+          --orbital-size: 300px;
+          --track-size: 280px;
+          --icon-size: 46px;
+          --student-size: 190px;
         }
 
         @media (min-width: 640px) {
